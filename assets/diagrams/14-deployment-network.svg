@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 16px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .lblSmW{ font-size: 12px; fill: #E7F2F1; text-anchor: middle; }
+      .lblBd { font-size: 13px; fill: #0F2A47; text-anchor: middle; font-weight: 700; }
+      .zone  { font-size: 13px; fill: #5DACA8; text-anchor: start; font-weight: 700; letter-spacing: 1px; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2.5; fill: none; }
+      .vpnGate { fill: #5DACA8; stroke: #0F2A47; stroke-width: 3; }
+    </style>
+  </defs>
+
+  <text x="600" y="35" class="title" text-anchor="middle">طوبولوجيّة النشر الإنتاجيّة — VPS منصّة الزعيم</text>
+  <text x="600" y="58" class="lblSm" text-anchor="middle">حماية متعدّدة الطبقات + شبكة داخليّة معزولة</text>
+
+  <!-- Zone 1: Public internet -->
+  <text x="60" y="100" class="zone">ZONE 1 · الإنترنت العامّ</text>
+  <rect x="980" y="115" width="200" height="100" rx="8" class="box"/>
+  <text x="1080" y="150" class="lblBd">المستخدمون</text>
+  <text x="1080" y="172" class="lblSm">مشجّعون · زوّار</text>
+  <text x="1080" y="192" class="lblSm">عالميّاً عبر الإنترنت</text>
+
+  <!-- Cloudflare edge -->
+  <rect x="730" y="115" width="200" height="100" rx="8" fill="#5DACA8" stroke="#0F2A47" stroke-width="2"/>
+  <text x="830" y="150" class="lblW">Cloudflare Edge</text>
+  <text x="830" y="172" class="lblSmW">WAF + DDoS</text>
+  <text x="830" y="192" class="lblSmW">CDN + DNS + Stream</text>
+
+  <line x1="980" y1="165" x2="930" y2="165" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Firewall -->
+  <rect x="500" y="115" width="180" height="100" rx="8" class="boxDk"/>
+  <text x="590" y="150" class="lblW">Firewall</text>
+  <text x="590" y="172" class="lblSmW">جدار حماية حافة</text>
+  <text x="590" y="192" class="lblSmW">Port 443 فقط</text>
+
+  <line x1="730" y1="165" x2="680" y2="165" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Public-facing servers -->
+  <text x="60" y="270" class="zone">ZONE 2 · المنطقة العامّة (DMZ)</text>
+
+  <rect x="40" y="285" width="930" height="160" rx="10" fill="#FFFFFF" stroke="#0F2A47" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="60" y="310" width="280" height="120" rx="8" class="boxHi"/>
+  <text x="200" y="345" class="lblBd">Web-Front</text>
+  <text x="200" y="368" class="lblSm">IIS · 172.18.11.1</text>
+  <text x="200" y="388" class="lblSm">ittihadclub.ly</text>
+  <text x="200" y="410" class="lblSm">Vue 3 SPA bundles</text>
+
+  <rect x="360" y="310" width="280" height="120" rx="8" class="boxHi"/>
+  <text x="500" y="345" class="lblBd">Admin-Front</text>
+  <text x="500" y="368" class="lblSm">IIS · 172.18.111.1</text>
+  <text x="500" y="388" class="lblSm">admin.ittihadclub.ly</text>
+  <text x="500" y="410" class="lblSm">Quasar Management SPA</text>
+
+  <rect x="660" y="310" width="290" height="120" rx="8" class="boxDk"/>
+  <text x="805" y="345" class="lblW">API-BackEnd</text>
+  <text x="805" y="368" class="lblSmW">IIS · 172.18.44.1</text>
+  <text x="805" y="388" class="lblSmW">api.ittihadclub.ly</text>
+  <text x="805" y="410" class="lblSmW">ASP.NET Core 8 · 60+ خدمة</text>
+
+  <!-- arrows from Firewall down to DMZ -->
+  <line x1="590" y1="215" x2="200" y2="310" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="590" y1="215" x2="500" y2="310" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="590" y1="215" x2="805" y2="310" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- VPN Gate strip -->
+  <text x="60" y="480" class="zone">VPN GATE · بوّابة الشبكة الخاصّة الافتراضيّة</text>
+  <rect x="40" y="495" width="930" height="60" rx="8" class="vpnGate"/>
+  <text x="505" y="525" class="lblW">VPN — Wireguard / OpenVPN · لا يمرّ شيء بدون مصادقة + Certificate</text>
+  <text x="505" y="548" class="lblSmW">بمصادقة ثنائيّة (2FA) لكل مدير + سجلّ دخول كامل</text>
+
+  <!-- Admins (right side, entering through gate) -->
+  <rect x="980" y="495" width="200" height="60" rx="8" class="box"/>
+  <text x="1080" y="520" class="lblBd">إدارة النادي</text>
+  <text x="1080" y="545" class="lblSm">DevOps · DBA · Finance</text>
+
+  <line x1="980" y1="525" x2="970" y2="525" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Zone 3: Private internal network -->
+  <text x="60" y="585" class="zone">ZONE 3 · الشبكة الداخليّة المعزولة</text>
+
+  <rect x="40" y="600" width="930" height="90" rx="10" fill="#E7F2F1" stroke="#0F2A47" stroke-width="2"/>
+
+  <rect x="60" y="615" width="280" height="60" rx="8" class="box"/>
+  <text x="200" y="640" class="lblBd">SQL-Database</text>
+  <text x="200" y="660" class="lblSm">SQL Server · 172.18.22.1</text>
+
+  <rect x="360" y="615" width="280" height="60" rx="8" class="box"/>
+  <text x="500" y="640" class="lblBd">Redis</text>
+  <text x="500" y="660" class="lblSm">Cache · 172.18.44.11</text>
+
+  <rect x="660" y="615" width="290" height="60" rx="8" class="box"/>
+  <text x="805" y="640" class="lblBd">Backup Server</text>
+  <text x="805" y="660" class="lblSm">نُسخ احتياطيّة يوميّة مشفّرة</text>
+
+  <!-- API to internal services connection -->
+  <line x1="805" y1="430" x2="805" y2="495" class="ar"/>
+  <line x1="805" y1="555" x2="805" y2="615" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="805" y1="555" x2="500" y2="615" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="805" y1="555" x2="200" y2="615" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Footer -->
+  <text x="600" y="685" class="cap" text-anchor="middle">الإنترنت → Cloudflare → Firewall → DMZ → (VPN فقط) → الشبكة الداخليّة</text>
+</svg>

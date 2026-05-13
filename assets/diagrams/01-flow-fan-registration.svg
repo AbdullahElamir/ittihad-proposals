@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 15px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2.5; fill: none; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" class="title" text-anchor="middle">رحلة تسجيل المشجّع الجديد</text>
+
+  <!-- Step 1: زائر -->
+  <rect x="1010" y="100" width="170" height="70" rx="8" class="box"/>
+  <text x="1095" y="135" class="lbl">زائر</text>
+  <text x="1095" y="155" class="lblSm">يدخل الموقع لأول مرة</text>
+
+  <!-- Step 2: يفتح الموقع -->
+  <rect x="820" y="100" width="170" height="70" rx="8" class="box"/>
+  <text x="905" y="135" class="lbl">يفتح الموقع</text>
+  <text x="905" y="155" class="lblSm">ittihadclub.ly</text>
+
+  <!-- Step 3: تسجيل -->
+  <rect x="630" y="100" width="170" height="70" rx="8" class="boxHi"/>
+  <text x="715" y="135" class="lbl">"تسجيل"</text>
+  <text x="715" y="155" class="lblSm">زرّ إنشاء الحساب</text>
+
+  <!-- Step 4: بريد/هاتف -->
+  <rect x="440" y="100" width="170" height="70" rx="8" class="box"/>
+  <text x="525" y="135" class="lbl">بريد / هاتف</text>
+  <text x="525" y="155" class="lblSm">إدخال البيانات</text>
+
+  <!-- Step 5: OTP -->
+  <rect x="250" y="100" width="170" height="70" rx="8" class="boxHi"/>
+  <text x="335" y="135" class="lbl">رمز OTP</text>
+  <text x="335" y="155" class="lblSm">عبر SMS / Email</text>
+
+  <!-- Step 6: تأكيد -->
+  <rect x="60" y="100" width="170" height="70" rx="8" class="box"/>
+  <text x="145" y="135" class="lbl">تأكيد</text>
+  <text x="145" y="155" class="lblSm">إثبات الهويّة</text>
+
+  <!-- Arrows row 1: right to left -->
+  <line x1="1010" y1="135" x2="990" y2="135" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="820" y1="135" x2="800" y2="135" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="630" y1="135" x2="610" y2="135" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="440" y1="135" x2="420" y2="135" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="250" y1="135" x2="230" y2="135" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Curved connector down to row 2 -->
+  <path d="M 145 170 Q 145 230 200 230 L 1050 230 Q 1095 230 1095 270" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Step 7: إكمال الملف -->
+  <rect x="1010" y="280" width="170" height="70" rx="8" class="boxHi"/>
+  <text x="1095" y="315" class="lbl">إكمال الملف</text>
+  <text x="1095" y="335" class="lblSm">الصورة + البيانات</text>
+
+  <!-- Step 8: الموافقة على الشروط -->
+  <rect x="820" y="280" width="170" height="70" rx="8" class="box"/>
+  <text x="905" y="315" class="lbl">الشروط والخصوصيّة</text>
+  <text x="905" y="335" class="lblSm">قبول السياسات</text>
+
+  <!-- Step 9: حساب فعّال -->
+  <rect x="630" y="280" width="170" height="70" rx="8" class="boxDk"/>
+  <text x="715" y="315" class="lblW">حساب فعّال</text>
+  <text x="715" y="335" class="lblSm" fill="#E7F2F1">JWT صادر</text>
+
+  <line x1="1010" y1="315" x2="990" y2="315" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="820" y1="315" x2="800" y2="315" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Branch arrows from "حساب فعّال" -->
+  <path d="M 715 350 Q 715 400 500 400 L 320 400 Q 270 400 270 440" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 715 350 Q 715 400 900 400 L 1000 400 Q 1050 400 1050 440" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Reward 1: بطاقة عضويّة -->
+  <rect x="940" y="450" width="220" height="80" rx="8" class="boxHi"/>
+  <text x="1050" y="485" class="lbl" font-weight="700">بطاقة عضويّة رقميّة</text>
+  <text x="1050" y="510" class="lblSm">QR + بيانات المشجّع</text>
+
+  <!-- Reward 2: 50 نقطة -->
+  <rect x="160" y="450" width="220" height="80" rx="8" class="boxHi"/>
+  <text x="270" y="485" class="lbl" font-weight="700">50 نقطة ترحيبيّة</text>
+  <text x="270" y="510" class="lblSm">رصيد في برنامج الولاء</text>
+
+  <text x="600" y="585" class="cap">المصدر: شركة الخبراء للحلول التقنية — توثيق منصّة الزعيم</text>
+</svg>

@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<title>العرض المالي — المنظومة الرقميّة لنادي الاتحاد — Code Experts IT Solutions</title>
+<link rel="stylesheet" href="../assets/brand.css"/>
+<link rel="stylesheet" href="../assets/components.css"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;600;700&family=Tajawal:wght@300;400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+/* ══════════════════════════════════════════════════════════════
+   PDF page-break protection (v4 — 2026-05-13)
+   ──────────────────────────────────────────────────────────────
+   The PDF is rendered by Chromium at A4 with margins
+   top:14mm bottom:20mm left:12mm right:12mm  →  printable area
+   roughly 186mm × 263mm. Every rule below assumes this geometry.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Smart page breaks: only explicit utility classes trigger a break */
+.section { padding-top: 6mm; }
+.page-break-before { page-break-before: always; break-before: page; }
+.page-break-after  { page-break-after:  always; break-after:  page; }
+.no-break          { page-break-inside: avoid;  break-inside: avoid; }
+
+/* ─── PARAGRAPHS & TEXT WIDOWS/ORPHANS ─── */
+p, li {
+  orphans: 3;
+  widows: 3;
+}
+
+/* ─── HEADINGS: never strand at bottom of page ─── */
+h1, h2, h3, h4, h5, h6 {
+  page-break-after:  avoid;
+  break-after:       avoid-page;
+  page-break-inside: avoid;
+  break-inside:      avoid;
+}
+/* The element immediately after a heading must stay with it */
+h1 + *, h2 + *, h3 + *, h4 + *, h5 + *, h6 + * {
+  page-break-before: avoid;
+  break-before:      avoid-page;
+}
+
+/* ─── SECTION HEADER (the gold-rule eyebrow block) ─── */
+.section > .section-header,
+.section-header {
+  page-break-after:  avoid !important;
+  break-after:       avoid-page !important;
+  page-break-inside: avoid;
+  break-inside:      avoid;
+}
+.section-header + *,
+.section-header + p,
+.section-header + .lead {
+  page-break-before: avoid;
+  break-before:      avoid-page;
+}
+
+/* ─── TABLES: keep header on continuation pages, never split a row ─── */
+table     { page-break-inside: auto;  break-inside: auto; }
+thead     { display: table-header-group; }
+tfoot     { display: table-footer-group; }
+tr        { page-break-inside: avoid; break-inside: avoid; }
+caption   { page-break-after:  avoid; break-after:  avoid-page; }
+
+/* ─── BLOCKS THAT MUST STAY TOGETHER (callouts, cards, diagrams) ─── */
+.callout, .display-quote, .pullquote, blockquote,
+.card, .tier-card, .phase-card, .signature-block,
+.timeline-step, .integration-pill,
+.diagram, .screenshot, figure,
+.stat-editorial, .editorial-stats,
+.grid-2, .grid-3, .grid-4 {
+  page-break-inside: avoid;
+  break-inside:      avoid;
+}
+
+/* ─── LISTS ─── */
+ul, ol { page-break-inside: auto; break-inside: auto; }
+li     { page-break-inside: avoid; break-inside: avoid; }
+
+/* ─── STAT GRID PARENTS (Statistics section uses inline grids) ─── */
+[style*="display:grid"],
+[style*="display: grid"] {
+  /* Let small grids stay together. Larger grids that exceed page
+     height (like screenshot galleries) will still split because
+     page-break-inside:avoid is non-strict when content exceeds
+     page height. */
+}
+/* Statistics: the 4-column number cells live inside an inline grid
+   with border-top/bottom gold rules. Force them to stay intact. */
+[style*="border-top:1pt solid #C29B5C"][style*="border-bottom:1pt solid #C29B5C"] {
+  page-break-inside: avoid;
+  break-inside:      avoid;
+}
+
+/* ─── HUGE STATISTICS NUMERALS — print-fit clamp ──────────────
+   Section 25 uses inline font-size 96pt Cormorant numerals (e.g.
+   "3,665,786") in a 2-column grid. At 96pt those numerals are
+   wider than the 71mm column at the new printable width — the
+   left digit clips off the page. Cap them at 64pt for PDF print
+   so they remain dramatic but fit. Same clamp for 128pt hero
+   numerals. */
+[style*="font-size:128pt"] {
+  font-size: 84pt !important;
+  letter-spacing: -3px !important;
+}
+[style*="font-size:96pt"] {
+  font-size: 64pt !important;
+  letter-spacing: -2px !important;
+}
+[style*="font-size:60pt"][style*="Cormorant"] {
+  font-size: 48pt !important;
+}
+[style*="font-size:54pt"][style*="Cormorant"] {
+  font-size: 44pt !important;
+}
+
+/* ─── COVER & PART-DIVIDER SAFETY ─────────────────────────────
+   These have explicit width:210mm height:297mm and page-break-after/
+   page-break-before:always. The next .section must NOT inherit a
+   second break-before. */
+[style*="page-break-after:always"] + .section,
+[style*="page-break-after: always"] + .section,
+[style*="page-break-before:always"][style*="width:210mm"] + .section,
+[style*="page-break-before: always"][style*="width:210mm"] + .section {
+  page-break-before: auto;
+  break-before:      auto;
+}
+
+/* ─── IMAGE OVERFLOW PROTECTION ───────────────────────────────
+   Tall portrait screenshots (esp. mobile shots in the gallery)
+   render TALLER than the printable A4 area (263mm). With a section
+   header + caption + container border, the image must clamp to
+   ~195mm so the whole figure block stays inside one printable page.
+
+   IMPORTANT: keep width:100% — Chromium with max-height + width:auto
+   shrinks the horizontal axis to maintain aspect ratio at the
+   clamped height, producing a tiny right-aligned thumbnail instead
+   of a fitted shot. We want height-clamped scale-down with the
+   image filling the available width. */
+.screenshot img,
+.diagram img,
+figure img {
+  max-height: 200mm !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: top center !important;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Block-level wrappers around gallery items (assemble.cjs bigShot /
+   bigDiagram add inline border + page-break-inside:avoid). Tighter
+   clamp (190mm) so a gallery item + section header still fits one A4 page. */
+[style*="page-break-inside:avoid"][style*="border:0.5pt solid #D4CDC0"] img,
+[style*="page-break-inside:avoid"][style*="border:0.5pt solid #D4CDC0"] > img {
+  max-height: 190mm !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  object-position: top center !important;
+  display: block;
+}
+
+/* ─── PRINT-COLOR PRESERVATION ─── */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* ─── ABSOLUTE-POSITIONED COVER PIECES ────────────────────────
+   The cover and part-divider blocks use absolute positioning
+   inside a 297mm-tall container. Chromium PDF print sometimes
+   creates a phantom 2nd page when the container's bottom edge
+   is exactly at the page boundary. "contain: layout" on the
+   outer 297mm block keeps positioning inside the print box. */
+.section [style*="position:absolute"],
+.section [style*="position: absolute"] {
+  contain: layout;
+}
+
+/* ─── SECTION CONTENT RHYTHM ─── */
+.section .lead { margin-top: 6mm; }
+.section h3    { margin-top: 12mm; }
+h3 { margin-top: 8mm; }
+h3 + p, h3 + ol, h3 + ul, h3 + table,
+h3 + .diagram, h3 + .screenshot, h3 + .card,
+h3 + .grid-2, h3 + .grid-3, h3 + .editorial-stats {
+  margin-top: 3mm;
+}
+
+/* @page geometry — Chromium honors size + margin from CSS @page
+   only when build-pdfs.cjs passes preferCSSPageSize:true. The
+   current build passes preferCSSPageSize:false so the page
+   margins come from the page.pdf({margin}) call. Leaving @page
+   here as a screen-render fallback only. */
+@page { size: A4; margin: 14mm 12mm 20mm 12mm; }
+
+
+</style>
+</head><body>
+
+<div style="page-break-after:always;width:186mm;height:263mm;
+  background:#F5F0E6;color:#0F2A47;position:relative;overflow:hidden;
+  direction:rtl;box-sizing:border-box;margin:0 auto;
+  font-family:'Cairo','Tajawal','Segoe UI Arabic','Tahoma',sans-serif;">
+
+  <!-- TOP: gold edge bar (gradient for depth) -->
+  <div style="position:absolute;top:0;left:0;right:0;height:4mm;
+    background:linear-gradient(90deg,#C29B5C 0%,#D4B58A 50%,#C29B5C 100%);"></div>
+
+  <!-- Top metadata bar: classification + doc reference -->
+  <div style="position:absolute;top:9mm;left:14mm;right:14mm;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7pt;
+    letter-spacing:3px;color:#0F2A47;text-transform:uppercase;">
+    <span>CONFIDENTIAL · CLIENT EYES ONLY</span>
+    <span style="color:#C29B5C;">DOC · 2026-05-001-FIN</span>
+  </div>
+
+  <!-- Logo block -->
+  <div style="position:absolute;top:20mm;left:14mm;right:14mm;
+    display:flex;justify-content:flex-end;align-items:center;gap:14mm;
+    direction:ltr;">
+    <img src="../assets/club-logo.png" alt="Al-Ittihad"
+      style="height:28mm;width:auto;" />
+    <div style="width:0.5pt;height:24mm;background:#C29B5C;opacity:0.6;"></div>
+    <img src="../assets/code-experts-logo.svg" alt="Code Experts"
+      style="height:30mm;width:auto;" />
+  </div>
+
+  <!-- BACKGROUND massive italic numeral - the price marker -->
+  <div style="position:absolute;left:-28mm;top:64mm;
+    font-family:'Cormorant Garamond','EB Garamond','Playfair Display',Georgia,serif;
+    font-style:italic;font-weight:300;font-size:440pt;
+    color:#C29B5C;opacity:0.08;line-height:0.8;letter-spacing:-18px;
+    pointer-events:none;user-select:none;z-index:0;">650</div>
+
+  <!-- Master title block -->
+  <div style="position:absolute;top:70mm;right:14mm;max-width:158mm;
+    text-align:right;z-index:2;">
+
+    <!-- Eyebrow -->
+    <div style="display:flex;align-items:center;justify-content:flex-end;
+      gap:8mm;margin-bottom:6mm;">
+      <span style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7pt;
+        letter-spacing:3px;color:#C29B5C;text-transform:uppercase;">VOL. II</span>
+      <span style="width:22mm;height:0.5pt;background:#C29B5C;"></span>
+      <span style="font-family:'Cormorant Garamond','EB Garamond','Playfair Display',Georgia,serif;
+        font-style:italic;font-weight:400;font-size:17pt;color:#7B7268;">
+        Financial Proposal</span>
+    </div>
+
+    <!-- Massive Arabic title -->
+    <h1 style="font-family:'Reem Kufi','Cairo','Tajawal',sans-serif;
+      font-weight:700;font-size:54pt;line-height:1.15;color:#0F2A47;
+      margin:0;letter-spacing:-1.5px;">
+      التَكلفةُ والجَدولُ الزمنيُّ<br/>
+      وشُروطُ <span style="color:#C29B5C;">التَعاقُد</span>
+    </h1>
+
+    <!-- Gold hairline -->
+    <div style="width:50mm;height:1pt;background:#C29B5C;
+      margin:10mm 0 8mm auto;"></div>
+
+    <!-- Subtitle -->
+    <p style="font-family:'Cairo','Tajawal',sans-serif;font-weight:400;
+      font-size:11.5pt;color:#1A1A1A;line-height:1.7;margin:0;
+      max-width:152mm;margin-left:auto;">
+      تفصيلٌ شاملٌ للتكلفة، جدول الدفعات، الدعم والصيانة، التدريب، وشروط التعاقد · صالح حتّى ١٣ يوليو ٢٠٢٦
+    </p>
+  </div>
+
+  <!-- "Submitted to" block -->
+  <div style="position:absolute;bottom:26mm;right:14mm;max-width:120mm;
+    padding:4mm 9mm 4mm 0;border-right:1.5pt solid #C29B5C;direction:rtl;">
+    <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:6.5pt;
+      letter-spacing:3px;color:#C29B5C;text-transform:uppercase;
+      margin-bottom:3mm;">SUBMITTED TO · مُقدَّمٌ إلى</div>
+    <div style="font-family:'Reem Kufi','Cairo','Tajawal',sans-serif;font-weight:700;
+      font-size:14pt;color:#0F2A47;line-height:1.3;margin-bottom:2mm;">
+      نادي الاتحاد الرياضي الثقافي الاجتماعي
+    </div>
+    <div style="font-family:'Cormorant Garamond','EB Garamond','Playfair Display',Georgia,serif;
+      font-style:italic;font-weight:400;font-size:10.5pt;color:#7B7268;">
+      Al-Ittihad Sports &amp; Cultural Club · Tripoli
+    </div>
+  </div>
+
+  <!-- Bottom: hairline + contact band -->
+  <div style="position:absolute;bottom:8mm;left:14mm;right:14mm;
+    padding-top:5mm;border-top:0.5pt solid #D4CDC0;">
+    <div style="display:flex;justify-content:space-between;align-items:center;
+      font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:6.5pt;
+      letter-spacing:2.5px;color:#7B7268;direction:ltr;">
+      <span style="color:#0F2A47;font-weight:500;">REV 1.0 · MAY 2026</span>
+      <span style="color:#C29B5C;">CODE EXPERTS IT SOLUTIONS</span>
+      <span>+218 91 101 9111 · INFO@CODEEXPERTS.LY</span>
+    </div>
+  </div>
+
+</div>
+<div style="page-break-before:always;"><!--
+  Financial Proposal — Table of Contents
+  Fragment: a single <section class="section"> meant to be concatenated
+  into the master financial proposal HTML. Requires:
+    ../assets/brand.css
+    ../assets/components.css
+  Nine entries, designed to fit the 9-page maximum for the financial deck.
+  Chapter numbers use Arabic-Indic digits. Titles and pages are placeholders
+  for the technical writer to finalise.
+-->
+<section class="section">
+
+  <!-- ===== Section header ===== -->
+  <div class="section-header">
+    <div class="num">0</div>
+    <div>
+      <h2>فهرس المحتويات</h2>
+      <p>دليلٌ موجز لاستعراض بنود العرض المالي وجداول الدفع والصيانة.</p>
+    </div>
+  </div>
+
+  <!-- ===== TOC intro card ===== -->
+  <div class="toc-intro">
+    <div>
+      <div class="toc-intro-eyebrow">العرض المالي</div>
+      <div class="toc-intro-title">
+        المنظومة الرقميّة لنادي الاتحاد
+        <small class="toc-intro-sub">
+          تسعة أقسام — من الملخّص التنفيذي إلى التوقيع — تقدّم
+          صورة كاملة عن التكلفة وجدول الدفع والدعم.
+        </small>
+      </div>
+    </div>
+    <div class="toc-intro-mark">9 أقسام</div>
+  </div>
+
+  <!-- ===== Single flat list (no parts grouping needed at this size) ===== -->
+  <div class="toc-list">
+
+    <div class="toc-entry">
+      <span class="toc-chapter">1</span>
+      <span class="toc-title">
+        خطاب التقديم
+        <small>تقديم العرض المالي رسميًّا إلى إدارة النادي</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">2</span>
+    </div>
+
+    <div class="toc-entry">
+      <span class="toc-chapter">2</span>
+      <span class="toc-title">
+        الملخّص التنفيذي
+        <small>القيمة الإجماليّة المقترحة في صفحة واحدة</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">3</span>
+    </div>
+
+    <div class="toc-entry">
+      <span class="toc-chapter">3</span>
+      <span class="toc-title">
+        تفصيل البنود ونطاقها
+        <small>المكوّنات، الأسعار، الكميّات</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">4</span>
+    </div>
+
+    <div class="toc-entry is-highlight">
+      <span class="toc-chapter">4</span>
+      <span class="toc-title">
+        الإجمالي والمبلغ المُوصى به
+        <small>السعر النهائي الموصى به مع التبرير</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">5</span>
+    </div>
+
+    <div class="toc-entry">
+      <span class="toc-chapter">5</span>
+      <span class="toc-title">
+        جدول الدفع
+        <small>الدفعات المرحليّة والشروط الماليّة</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">6</span>
+    </div>
+
+    <div class="toc-entry">
+      <span class="toc-chapter">6</span>
+      <span class="toc-title">
+        باقات الدعم والصيانة
+        <small>أساسي — احترافي — متقدّم</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">7</span>
+    </div>
+
+    <div class="toc-entry">
+      <span class="toc-chapter">7</span>
+      <span class="toc-title">
+        الاستثناءات والافتراضات
+        <small>ما لا يشمله العرض وحدود المسؤوليّة</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">8</span>
+    </div>
+
+    <div class="toc-entry">
+      <span class="toc-chapter">8</span>
+      <span class="toc-title">
+        الشروط العامّة
+        <small>صلاحيّة العرض، السريّة، الملكيّة الفكريّة</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">9</span>
+    </div>
+
+    <div class="toc-entry">
+      <span class="toc-chapter">9</span>
+      <span class="toc-title">
+        التوقيع والاعتماد
+        <small>قبول العرض من ممثّل النادي ومن الشركة</small>
+      </span>
+      <span class="toc-leader"></span>
+      <span class="toc-page">9</span>
+    </div>
+
+  </div>
+
+</section>
+</div>
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">1</div>
+    <div>
+      <h2>رسالة تقديم العرض المالي</h2>
+      <p>خطاب رسمي مُوجَّه إلى إدارة نادي الاتحاد — طرابلس</p>
+    </div>
+  </div>
+
+  <div class="letter-head">
+    <div class="from">
+      <b>شركة الخبراء للحلول التقنية</b>
+      Code Experts IT Solutions<br/>
+      بن عاشور — طرابلس، ليبيا<br/>
+      +218 91 101 9111 — Info@codeexperts.ly
+    </div>
+    <div class="meta">
+      <b>المرجع:</b> CE-FIN-2026-05<br/>
+      <b>التاريخ:</b> مايو 2026<br/>
+      <b>سريان العرض:</b> 60 يوماً
+    </div>
+  </div>
+
+  <div class="letter-body">
+    <p><b>السادة / إدارة نادي الاتحاد الرياضي الثقافي الاجتماعي — طرابلس</b><br/>
+    تحيّةً طيّبةً وبعد،</p>
+
+    <p>إلحاقاً بالعرض الفنّي المُقدَّم من شركتنا لتطوير المنظومة الرقميّة المتكاملة لنادي الاتحاد، يسرّنا أن نُرفِق طيّه <b>العرض المالي</b> الخاصّ بالمشروع، شاملاً تفصيل بنود التكلفة، وجدول الدفعات، وعقد الدعم والصيانة السنويّة، وأسعار طلبات التغيير.</p>
+
+    <p>القيمة الإجماليّة للمشروع كما هي مُفصَّلة في هذا العرض هي <b>650,000 د.ل (ما يعادل 102,700 دولار أمريكي تقريباً)</b>، تشمل كافة بنود العرض الفنّي دون استثناء، وتُسلَّم وفق جدول زمني مرتبط بمراحل الدفع المُبيَّنة في القسم 8.</p>
+
+    <p>هذا العرض ساري المفعول لمدّة <b>ستّين (60) يوماً</b> من تاريخ إصداره، وقابل للتوقيع والاعتماد فور موافقة الإدارة، ويلتزم فريقنا بالبدء الفعلي للتنفيذ خلال أسبوعين من توقيع العقد واستلام الدفعة الأولى.</p>
+
+    <p>نتطلّع إلى شرف خدمة ناديكم العريق، والمساهمة في إنجاز منظومة رقميّة تليق بتاريخه وقاعدته الجماهيريّة.</p>
+
+    <p>وتفضّلوا بقبول فائق الاحترام والتقدير،،،</p>
+  </div>
+
+  <div class="letter-signoff">
+    <div class="who">عن شركة الخبراء للحلول التقنية</div>
+    <div class="role">المدير العام — Code Experts IT Solutions</div>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">2</div>
+    <div>
+      <h2>ملخّص النظام في صفحة واحدة</h2>
+      <p>المكوّنات الرئيسيّة للمنظومة الرقميّة كما هي مُعتمَدة في العرض الفنّي</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    هذا الملخّص لأغراض مرجعيّة مع العرض المالي فقط. التفاصيل الكاملة للهندسة الفنّية، والميزات، وحالات الاستخدام موجودة في <b>العرض الفنّي</b> المُسلَّم بشكل منفصل.
+  </div>
+
+  <div class="info-strip">
+    <div class="cell"><div class="k">المكوّنات الرئيسيّة</div><div class="v">8</div></div>
+    <div class="cell"><div class="k">قنوات الوصول</div><div class="v">3</div></div>
+    <div class="cell"><div class="k">مدّة التنفيذ</div><div class="v">9 أشهر</div></div>
+    <div class="cell"><div class="k">ضمان ما بعد التسليم</div><div class="v">12 شهر</div></div>
+  </div>
+
+  <h3>المكوّنات الأساسيّة المُسلَّمة</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-eyebrow">المنصّة</div>
+      <div class="card-title">المنصّة الإلكترونيّة + لوحة التحكّم الإداريّة</div>
+      موقع رسمي عام، لوحة تحكّم إداريّة كاملة الصلاحيّات، إدارة محتوى، أخبار، فعاليّات، مباريات، لاعبين، فرق، إحصائيّات، وأرشيف بصري.
+    </div>
+
+    <div class="card">
+      <div class="card-eyebrow">الموبايل</div>
+      <div class="card-title">تطبيقا iOS و Android للمشجّعين</div>
+      تطبيقان أصليّان (Native) متزامنان مع المنصّة، إشعارات لحظيّة، مباريات مباشرة، عضويّات، محفظة نقاط، متجر، وتبرّعات.
+    </div>
+
+    <div class="card">
+      <div class="card-eyebrow">التجارة والولاء</div>
+      <div class="card-title">المتجر + الدفع الإلكتروني + التبرّعات + العضويّات</div>
+      متجر منتجات النادي، بوّابة دفع (Plutu)، نظام عضويّات مُتدرّج، تسجيل المشجّعين، وقناة تبرّعات مع تقارير شفّافة.
+    </div>
+
+    <div class="card">
+      <div class="card-eyebrow">الذاكرة والتراث</div>
+      <div class="card-title">الأرشيف وذاكرة الاتحاد والمكتبة الرقميّة</div>
+      أرشيف وسائط متعدّدة (صور، فيديو، صحف، وثائق)، فهرسة زمنيّة، بحث متقدّم، وحفظ طويل المدى.
+    </div>
+  </div>
+
+  <h3>ما يميّز هذا العرض</h3>
+
+  <ul class="checks">
+    <li>تكامل مباشر مع Odoo ERP، iSend SMS، بوّابة Plutu، Cloudflare، والشبكات الاجتماعيّة.</li>
+    <li>حماية بمستوى المؤسّسات: WAF + DDoS Protection + نسخ احتياطي متعدّد المواقع + سياسات استرداد محدّدة.</li>
+    <li>تدريب فعلي لفِرَق النادي (إدارة، إعلام، تسويق) + توثيق عربي كامل + ضمان 12 شهراً بعد الإطلاق.</li>
+    <li>تسليم الكود المصدري كاملاً + ملكيّة فكريّة كاملة للنادي + لا قُفل تقني (No Vendor Lock-in).</li>
+  </ul>
+
+</section>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">3</div>
+    <div>
+      <h2>تفصيل بنود التكلفة</h2>
+      <p>توزيع التكلفة على مكوّنات المنظومة الرقميّة بنداً بنداً</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    الجدول التالي يعرض النطاق السعري لكلّ بند بالدينار الليبي والدولار الأمريكي. القيمة الإجماليّة المُعتمَدة <b>650,000 د.ل (102,700 دولار أمريكي تقريباً)</b> مفصّلة في القسم 4، وهي محسوبة ضمن النطاقات المُبيَّنة أدناه.
+  </div>
+
+  <div class="pricing-table">
+    <div class="pricing-row head">
+      <div>البند</div>
+      <div class="price-lyd">السعر (د.ل)</div>
+      <div class="price-usd">السعر (USD)</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">المنصّة الإلكترونيّة + لوحة التحكّم الإداريّة</div>
+      <div class="price-lyd">220,000 – 300,000</div>
+      <div class="price-usd">$34,800 – $47,400</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">تطبيقات iOS و Android (Native)</div>
+      <div class="price-lyd">100,000 – 150,000</div>
+      <div class="price-usd">$15,800 – $23,700</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">المتجر الإلكتروني + بوّابة الدفع + التبرّعات</div>
+      <div class="price-lyd">45,000 – 70,000</div>
+      <div class="price-usd">$7,100 – $11,100</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">العضويّات وتسجيل المشجّعين</div>
+      <div class="price-lyd">45,000 – 75,000</div>
+      <div class="price-usd">$7,100 – $11,850</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">الأرشيف وذاكرة الاتحاد والمكتبة الرقميّة</div>
+      <div class="price-lyd">50,000 – 90,000</div>
+      <div class="price-usd">$7,900 – $14,200</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">التكاملات: ERP + SMS + Payment + APIs</div>
+      <div class="price-lyd">70,000 – 120,000</div>
+      <div class="price-usd">$11,000 – $19,000</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">الحماية + Cloudflare + DevOps + النسخ الاحتياطي</div>
+      <div class="price-lyd">30,000 – 55,000</div>
+      <div class="price-usd">$4,700 – $8,700</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">التدريب + التوثيق + التسليم</div>
+      <div class="price-lyd">20,000 – 35,000</div>
+      <div class="price-usd">$3,160 – $5,530</div>
+    </div>
+
+    <div class="pricing-row total">
+      <div class="item-name">الإجمالي المُقترَح (القيمة المُعتمَدة)</div>
+      <div class="price-lyd">650,000</div>
+      <div class="price-usd">≈ $102,700</div>
+    </div>
+  </div>
+
+  <h3>توضيح كلّ بند</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">المنصّة + لوحة التحكّم</div>
+      تطوير الواجهة الأماميّة العامّة (Vue/Nuxt) ولوحة تحكّم إداريّة (Vue + Vuetify) متكاملة مع API خلفي (.NET 8) بنماذج صلاحيّات متعدّدة، إدارة محتوى، أخبار، فعاليّات، مباريات، لاعبين، إحصائيّات.
+    </div>
+
+    <div class="card">
+      <div class="card-title">تطبيقات iOS و Android</div>
+      تطبيقان أصليّان (Swift / Kotlin أو Flutter حسب التوصية)، نشر على المتجرين، إشعارات Push، مزامنة لحظيّة مع المنصّة، ودعم العضويّات والمحفظة والمتجر داخل التطبيق.
+    </div>
+
+    <div class="card">
+      <div class="card-title">المتجر + الدفع + التبرّعات</div>
+      كاتالوج منتجات، عربة، تسجيل خروج، تكامل مع <b>Plutu</b>، تتبّع طلبات، نظام تبرّعات بقنوات متعدّدة، وتقارير ماليّة شفّافة للإدارة.
+    </div>
+
+    <div class="card">
+      <div class="card-title">العضويّات وتسجيل المشجّعين</div>
+      نظام عضويّات مُتدرّج (عاديّة، ذهبيّة، بلاتينيّة)، بطاقات مشجّع رقميّة، تجديد آلي، تحقّق هويّة بالرقم الوطني، ومحفظة نقاط ولاء.
+    </div>
+
+    <div class="card">
+      <div class="card-title">الأرشيف وذاكرة الاتحاد</div>
+      نظام أرشفة رقمي بأكثر من نمط (صور، فيديو، صحف، وثائق)، فهرسة زمنيّة، بحث متقدّم، عرض زمني تفاعلي، وحفظ طويل المدى مع تكرار.
+    </div>
+
+    <div class="card">
+      <div class="card-title">التكاملات الخارجيّة</div>
+      تكامل مع <b>Odoo ERP</b> (محاسبة، مخازن)، <b>iSend</b> للرسائل النصّية، بوّابة <b>Plutu</b>، APIs خارجيّة (KoraStats، مواقع التواصل)، وSSO حسب الحاجة.
+    </div>
+
+    <div class="card">
+      <div class="card-title">الحماية والـ DevOps</div>
+      <b>Cloudflare</b> (CDN + WAF + DDoS Protection)، شهادات TLS، نسخ احتياطي ثلاثيّ المواقع، خطّة استرداد كوارث، مراقبة 24/7، وأنابيب CI/CD.
+    </div>
+
+    <div class="card">
+      <div class="card-title">التدريب والتوثيق</div>
+      جلسات تدريب لفِرَق النادي (إدارة، إعلام، تسويق، خدمة الجمهور)، دليل مستخدم عربي، دليل فنّي للمشرفين، فيديوهات تعليميّة، ودعم انتقالي.
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">4</div>
+    <div>
+      <h2>القيمة الإجماليّة المُعتمَدة</h2>
+      <p>الرقم النهائي للمشروع كما هو مُقترَح للاعتماد</p>
+    </div>
+  </div>
+
+  <div class="big-price">
+    <div class="eyebrow">القيمة الإجماليّة للمشروع</div>
+    <div class="figure">650,000 <span class="unit">د.ل</span></div>
+    <div class="usd-line">≈ 102,700 دولار أمريكي</div>
+    <div class="justifier">
+      هذا السعر يشمل جميع البنود الثمانية المذكورة في القسم 3، من التطوير والتكاملات إلى التدريب والتسليم، مع ضمان فنّي مدّته 12 شهراً بعد الإطلاق الرسمي. عقد الدعم والصيانة السنويّة <b>اختياري</b> ومُسعَّر بشكل منفصل في القسم 5.
+    </div>
+  </div>
+
+  <div class="callout">
+    <b>الأسعار محسوبة على أساس سعر صرف</b> 1 USD = 6.3268 LYD وفق متوسط مصرف ليبيا المركزي بتاريخ 12 مايو 2026، وتخضع لإعادة الحساب وفق سعر الصرف الرسمي يوم التحويل.
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">5</div>
+    <div>
+      <h2>الدعم والصيانة السنويّة</h2>
+      <p>عقد ما بعد الإطلاق — اختياري ومُسعَّر منفصلاً عن قيمة المشروع</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    تتراوح قيمة عقد الدعم السنوي بين <b>15% و 20% من قيمة المشروع</b>، أي ما يعادل <b>97,500 – 130,000 د.ل/سنة</b> (≈ $15,405 – $20,540). الباقات الشهريّة أدناه توفّر تدفّقاً تشغيلياً مرناً بدلاً من الدفعة السنويّة الواحدة.
+  </div>
+
+  <div class="grid-3">
+
+    <div class="tier-card">
+      <div class="tier-eyebrow">الباقة الأولى</div>
+      <div class="tier-name">الباقة الأساسيّة</div>
+      <div class="tier-price">8,000 <span class="per">د.ل/شهر</span></div>
+      <div class="tier-usd">≈ $1,265 شهرياً</div>
+      <ul>
+        <li>دعم فنّي خلال ساعات العمل</li>
+        <li>إصلاح الأخطاء الحرجة (SLA: 48 ساعة)</li>
+        <li>نسخ احتياطي يومي</li>
+        <li>تحديثات أمنيّة دوريّة</li>
+        <li>تقرير شهري</li>
+      </ul>
+    </div>
+
+    <div class="tier-card recommended">
+      <div class="tier-badge">موصى به</div>
+      <div class="tier-eyebrow">الباقة الثانية</div>
+      <div class="tier-name">الباقة الاحترافيّة</div>
+      <div class="tier-price">10,000 – 12,000 <span class="per">د.ل/شهر</span></div>
+      <div class="tier-usd">≈ $1,580 – $1,896 شهرياً</div>
+      <ul>
+        <li>دعم فنّي ممتدّ (ساعات إضافيّة)</li>
+        <li>SLA: 24 ساعة للأخطاء الحرجة</li>
+        <li>نسخ احتياطي يومي + استرداد سريع</li>
+        <li>تحديثات أمنيّة وتحسينات أداء</li>
+        <li>5 ساعات تطوير شهرياً (تعديلات صغيرة)</li>
+        <li>تقرير نصف شهري + اجتماع ربعي</li>
+      </ul>
+    </div>
+
+    <div class="tier-card">
+      <div class="tier-eyebrow">الباقة الثالثة</div>
+      <div class="tier-name">الباقة المتقدّمة</div>
+      <div class="tier-price">15,000 <span class="per">د.ل/شهر+</span></div>
+      <div class="tier-usd">≈ $2,370+ شهرياً</div>
+      <ul>
+        <li>دعم 24/7 لحالات الطوارئ</li>
+        <li>SLA: 4 ساعات للأخطاء الحرجة</li>
+        <li>مهندس مخصّص (Dedicated Engineer)</li>
+        <li>10 ساعات تطوير شهرياً</li>
+        <li>مراجعات أمنيّة ربع سنويّة</li>
+        <li>تقرير أسبوعي + اجتماع شهري</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="callout warn" style="margin-top: 14px;">
+    عقد الدعم <b>غير شرط لتسليم المشروع</b>. يحق للنادي اختيار أيّ باقة لاحقاً بعد التشغيل، أو الاكتفاء بفترة الضمان الفنّي المجّاني (12 شهراً) المتضمَّنة في قيمة المشروع.
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">6</div>
+    <div>
+      <h2>برنامج التدريب</h2>
+      <p>التأهيل التشغيلي لفِرَق النادي على المنظومة الجديدة</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    التدريب الأساسي <b>متضمَّن في قيمة المشروع</b> (ضمن بند التدريب والتوثيق والتسليم). الأسعار المُدرَجة أدناه تُطبَّق فقط على جلسات تدريب إضافيّة، أو حِزَم تدريب مستقلّة بعد فترة الضمان.
+  </div>
+
+  <div class="pricing-table">
+    <div class="pricing-row head">
+      <div>نوع التدريب</div>
+      <div class="price-lyd">السعر (د.ل)</div>
+      <div class="price-usd">السعر (USD)</div>
+    </div>
+    <div class="pricing-row">
+      <div class="item-name">حزمة تدريب مستقلّة (5 أيام تدريب لفِرَق متعدّدة)</div>
+      <div class="price-lyd">20,000 – 35,000</div>
+      <div class="price-usd">$3,160 – $5,530</div>
+    </div>
+  </div>
+
+  <h3>ما يتضمّنه البرنامج</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-eyebrow">الإدارة</div>
+      <div class="card-title">إدارة المحتوى والصلاحيّات</div>
+      تدريب المسؤولين على لوحة التحكّم، إدارة المستخدمين، الصلاحيّات، التقارير، ومراقبة النشاط.
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">الإعلام والمحتوى</div>
+      <div class="card-title">إدارة الأخبار والوسائط</div>
+      تدريب فريق الإعلام على نشر الأخبار، إدارة الأرشيف البصري، جدولة الفعاليّات، والتكامل مع وسائل التواصل.
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">التسويق</div>
+      <div class="card-title">العضويّات والمتجر والتبرّعات</div>
+      تدريب فريق التسويق على إدارة العضويّات، تشغيل المتجر، حملات الولاء، ومتابعة التبرّعات.
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">التشغيل</div>
+      <div class="card-title">العمليّات اليوميّة والتقارير</div>
+      تدريب فريق العمليّات على متابعة المعاملات، تشغيل التقارير، إدارة الإشعارات، ومعالجة طلبات الجمهور.
+    </div>
+  </div>
+
+  <p style="margin-top: 12px; font-size: 10.5pt;">
+    تُسلَّم مع البرنامج: <b>دليل مستخدم عربي مصوّر</b> + <b>دليل فنّي للمشرفين</b> + <b>سلسلة فيديوهات تعليميّة</b> + جلسة دعم تشغيلي خلال أوّل 30 يوماً بعد الإطلاق.
+  </p>
+
+</section>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">7</div>
+    <div>
+      <h2>طلبات التغيير وتسعير الإضافات</h2>
+      <p>أسعار الساعة واليوم والإضافات خارج نطاق العرض الأساسي</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    أيّ طلب يقع خارج نطاق العمل المُعتمَد في العرض الفنّي يُعدّ <b>طلب تغيير (Change Request)</b>، ويُسعَّر وفق الجدول التالي بعد تقديم تحليل ساعات مُفصَّل وموافقة الإدارة الخطّية قبل التنفيذ.
+  </div>
+
+  <div class="pricing-table">
+    <div class="pricing-row head">
+      <div>البند</div>
+      <div class="price-lyd">السعر (د.ل)</div>
+      <div class="price-usd">السعر (USD)</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">ساعة تطوير / تحليل</div>
+      <div class="price-lyd">200 – 300</div>
+      <div class="price-usd">$32 – $47</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">يوم عمل فنّي كامل (8 ساعات)</div>
+      <div class="price-lyd">1,500 – 2,500</div>
+      <div class="price-usd">$237 – $395</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">تكامل خارجي جديد (API أو منظومة طرف ثالث)</div>
+      <div class="price-lyd">15,000 – 50,000</div>
+      <div class="price-usd">$2,370 – $7,900</div>
+    </div>
+
+    <div class="pricing-row">
+      <div class="item-name">إضافة Module جديد (وحدة وظيفيّة مستقلّة)</div>
+      <div class="price-lyd">حسب عرض مستقلّ</div>
+      <div class="price-usd">حسب نطاق العمل</div>
+    </div>
+  </div>
+
+  <h3>سياسة معالجة طلبات التغيير</h3>
+
+  <ul class="checks">
+    <li>كلّ طلب تغيير يُوثَّق خطّياً ويُحدَّد له نطاق العمل وعدد الساعات قبل التنفيذ.</li>
+    <li>تُحتسب الفواتير شهرياً وفق الساعات المُنجَزة فعلياً، مع تقرير عمل مُرفَق.</li>
+    <li>التعديلات البسيطة ضمن الضمان (تصحيح أخطاء، تعديل نصوص، ضبط بصري طفيف) <b>مجّانيّة</b> ولا تُحتسب من ساعات التغيير.</li>
+  </ul>
+
+</section>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">8</div>
+    <div>
+      <h2>جدول الدفعات والشروط العامّة</h2>
+      <p>توزيع الدفعات على مراحل التسليم + شروط العقد + الاستثناءات</p>
+    </div>
+  </div>
+
+  <h3>جدول الدفعات</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>المرحلة</th>
+        <th style="text-align:center;">النسبة</th>
+        <th style="text-align:center;">المبلغ (د.ل)</th>
+        <th style="text-align:center;">المبلغ (USD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>عند توقيع العقد</td>
+        <td style="text-align:center;">30%</td>
+        <td style="text-align:center;">195,000</td>
+        <td style="text-align:center;">$30,810</td>
+      </tr>
+      <tr>
+        <td>بعد اعتماد التصميم والتحليل</td>
+        <td style="text-align:center;">20%</td>
+        <td style="text-align:center;">130,000</td>
+        <td style="text-align:center;">$20,540</td>
+      </tr>
+      <tr>
+        <td>بعد تسليم النسخة التجريبيّة (Beta)</td>
+        <td style="text-align:center;">25%</td>
+        <td style="text-align:center;">162,500</td>
+        <td style="text-align:center;">$25,675</td>
+      </tr>
+      <tr>
+        <td>بعد اختبار القبول (UAT)</td>
+        <td style="text-align:center;">15%</td>
+        <td style="text-align:center;">97,500</td>
+        <td style="text-align:center;">$15,405</td>
+      </tr>
+      <tr>
+        <td>بعد الإطلاق الرسمي</td>
+        <td style="text-align:center;">10%</td>
+        <td style="text-align:center;">65,000</td>
+        <td style="text-align:center;">$10,270</td>
+      </tr>
+      <tr style="background: var(--ce-teal-pale); font-weight: 800;">
+        <td>الإجمالي</td>
+        <td style="text-align:center;">100%</td>
+        <td style="text-align:center;">650,000</td>
+        <td style="text-align:center;">$102,700</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>الشروط العامّة</h3>
+
+  <ul class="checks">
+    <li>تُسدَّد كلّ دفعة خلال 14 يوماً من تاريخ الفاتورة المُقابلة لها.</li>
+    <li>الملكيّة الفكريّة الكاملة للنظام ولقاعدة البيانات تنتقل للنادي بعد سداد الدفعة النهائيّة.</li>
+    <li>الكود المصدري يُسلَّم كاملاً للنادي مع التوثيق الفنّي بعد الإطلاق الرسمي.</li>
+    <li>ضمان فنّي مدّته <b>12 شهراً</b> يبدأ من تاريخ الإطلاق، يشمل إصلاح الأخطاء وضبط الأداء — دون رسوم.</li>
+    <li>التأخّر في تسديد أيّ دفعة لأكثر من 30 يوماً يحقّ معه للشركة تعليق العمل حتّى السداد.</li>
+    <li>كلّ تعديل يقع خارج نطاق العرض الفنّي يخضع لآليّة طلبات التغيير في القسم 7.</li>
+  </ul>
+
+  <h3>البنود المُستثناة من السعر (رسوم أطراف ثالثة)</h3>
+
+  <div class="callout warn">
+    البنود التالية <b>غير متضمَّنة</b> في قيمة المشروع، وتُسدَّد مباشرة من النادي للأطراف الثالثة وفق استهلاكه الفعلي:
+  </div>
+
+  <div class="exclusion-grid">
+    <div class="exclusion-item">اشتراك Apple Developer Program (≈ $99 سنوياً)</div>
+    <div class="exclusion-item">رسوم Google Play (≈ $25 لمرّة واحدة)</div>
+    <div class="exclusion-item">عمولات بوّابة الدفع Plutu لكلّ معاملة</div>
+    <div class="exclusion-item">باقات iSend SMS وفق الاستهلاك</div>
+    <div class="exclusion-item">باقات Cloudflare المدفوعة (إن وُجدت)</div>
+    <div class="exclusion-item">رسوم استضافة VPS الإضافيّة</div>
+    <div class="exclusion-item">تراخيص Odoo Enterprise (إن اخْتير الإصدار المدفوع)</div>
+    <div class="exclusion-item">خدمات البثّ المدفوعة (إن طُلبت)</div>
+  </div>
+
+  <h3>سريان العرض وسعر الصرف</h3>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-eyebrow">المدّة</div>
+      <div class="card-title">سريان العرض المالي</div>
+      هذا العرض ساري المفعول لمدّة <b>60 يوماً</b> من تاريخ إصداره (مايو 2026). بعد انتهاء هذه المدّة، يحقّ للشركة مراجعة الأسعار وفق ظروف السوق وقت إعادة التقديم.
+    </div>
+    <div class="card">
+      <div class="card-eyebrow">العملة</div>
+      <div class="card-title">سعر الصرف المُعتمَد</div>
+      الأسعار محسوبة على أساس <b>1 USD = 6.3268 LYD</b> وفق متوسط مصرف ليبيا المركزي بتاريخ 12 مايو 2026، وتخضع لإعادة الحساب وفق سعر الصرف الرسمي يوم التحويل.
+    </div>
+  </div>
+
+</section>
+
+<section class="section">
+
+  <div class="section-header">
+    <div class="num">9</div>
+    <div>
+      <h2>صفحة التوقيع والاعتماد</h2>
+      <p>اعتماد العرض المالي من الطرفين — الخطوة النهائيّة قبل بدء التنفيذ</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    بتوقيع هذا العرض من الطرفين يصبح ساري المفعول، وتلتزم <b>شركة الخبراء للحلول التقنية</b> بالبدء الفعلي للتنفيذ خلال أسبوعين من استلام الدفعة الأولى (30% — 195,000 د.ل). يُحرَّر من هذه الوثيقة نسختان أصليّتان، بيد كلّ طرف نسخة.
+  </div>
+
+  <div class="info-strip">
+    <div class="cell"><div class="k">المرجع</div><div class="v" style="font-size: 11pt;">CE-FIN-2026-05</div></div>
+    <div class="cell"><div class="k">القيمة الإجماليّة</div><div class="v">650,000 د.ل</div></div>
+    <div class="cell"><div class="k">سريان العرض</div><div class="v">60 يوماً</div></div>
+    <div class="cell"><div class="k">تاريخ الإصدار</div><div class="v" style="font-size: 11pt;">مايو 2026</div></div>
+  </div>
+
+  <div class="grid-2" style="margin-top: 18px; gap: 18px;">
+
+    <!-- ============ Right column: Al-Ittihad club ============ -->
+    <div class="signature-block">
+      <div class="sig-head">
+        <div class="sig-eyebrow">الطرف الأوّل — العميل</div>
+        <div class="sig-party">عن نادي الاتحاد الرياضي الثقافي الاجتماعي — طرابلس</div>
+      </div>
+
+      <div class="sig-row">
+        <div class="lbl">الاسم:</div>
+        <div class="line"></div>
+      </div>
+      <div class="sig-row">
+        <div class="lbl">الصفة:</div>
+        <div class="line"></div>
+      </div>
+      <div class="sig-row">
+        <div class="lbl">التوقيع:</div>
+        <div class="line"></div>
+      </div>
+      <div class="sig-row">
+        <div class="lbl">التاريخ:</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="seal-row">
+        <span>الختم الرسمي للنادي</span>
+        <div class="seal-box">مكان الختم</div>
+      </div>
+    </div>
+
+    <!-- ============ Left column: Code Experts ============ -->
+    <div class="signature-block">
+      <div class="sig-head">
+        <div class="sig-eyebrow">الطرف الثاني — المُورِّد</div>
+        <div class="sig-party">عن شركة الخبراء للحلول التقنية — Code Experts</div>
+      </div>
+
+      <div class="sig-row">
+        <div class="lbl">الاسم:</div>
+        <div class="line"></div>
+      </div>
+      <div class="sig-row">
+        <div class="lbl">الصفة:</div>
+        <div class="line"></div>
+      </div>
+      <div class="sig-row">
+        <div class="lbl">التوقيع:</div>
+        <div class="line"></div>
+      </div>
+      <div class="sig-row">
+        <div class="lbl">التاريخ:</div>
+        <div class="line"></div>
+      </div>
+
+      <div class="seal-row">
+        <span>الختم الرسمي للشركة</span>
+        <div class="seal-box">مكان الختم</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer-marker" style="margin-top: 18px;">
+    شركة الخبراء للحلول التقنية — Code Experts IT Solutions &nbsp;|&nbsp; +218 91 101 9111 &nbsp;|&nbsp; Info@codeexperts.ly &nbsp;|&nbsp; بن عاشور — طرابلس، ليبيا
+  </div>
+
+</section>
+
+
+<section class="page-break-before" id="closing-colophon-fin" style="
+  width:186mm;height:263mm;position:relative;background:#F5F0E6;overflow:hidden;
+  page-break-after:avoid;break-after:avoid;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:16mm 12mm;direction:rtl;box-sizing:border-box;
+  margin:0 auto;">
+
+  <!-- Top gold edge bar -->
+  <div style="position:absolute;top:0;left:0;right:0;height:3mm;
+    background:linear-gradient(90deg,#C29B5C 0%,#D4B58A 50%,#C29B5C 100%);
+    z-index:2;"></div>
+
+  <!-- BACKGROUND massive italic 650 — financial ornament -->
+  <div style="position:absolute;bottom:-46mm;left:50%;transform:translateX(-50%);
+    font-family:'Cormorant Garamond','EB Garamond','Playfair Display',Georgia,serif;
+    font-style:italic;font-weight:300;font-size:380pt;color:#C29B5C;
+    opacity:0.06;line-height:1;letter-spacing:-14px;
+    pointer-events:none;user-select:none;z-index:0;">650</div>
+
+  <!-- TOP eyebrow row -->
+  <div style="position:relative;z-index:1;display:flex;
+    justify-content:space-between;align-items:flex-start;direction:ltr;">
+    <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7.5pt;
+      letter-spacing:3.5px;color:#7B7268;text-transform:uppercase;">
+      EPILOGUE · خاتِمَة
+    </div>
+    <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7.5pt;
+      letter-spacing:3.5px;color:#C29B5C;text-transform:uppercase;">
+      CODE EXPERTS · IT SOLUTIONS
+    </div>
+  </div>
+
+  <!-- CENTER hero block -->
+  <div style="position:relative;z-index:1;text-align:center;
+    padding:6mm 6mm 0;direction:rtl;">
+
+    <!-- Italic mono eyebrow -->
+    <div style="font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5pt;
+      letter-spacing:4px;color:#C29B5C;text-transform:uppercase;margin-bottom:14mm;">
+      — خاتِمة العَرض المالي · CLOSING WORD —
+    </div>
+
+    <!-- MASSIVE Arabic hero phrase — partnership-focused.
+         Keeps the whole phrase in Reem Kufi; "شَراكةٍ" pulled out in gold
+         for editorial emphasis without breaking the type system. -->
+    <h1 style="font-family:'Reem Kufi','Cairo','Tajawal','Segoe UI Arabic',sans-serif;
+      font-weight:700;font-size:40pt;color:#0F2A47;line-height:1.35;
+      letter-spacing:-0.5px;margin:0 auto;max-width:155mm;">
+      بدايةُ <span style="color:#C29B5C;">شَراكةٍ</span>،<br/>
+      لا نِهايةُ صَفقَة.
+    </h1>
+
+    <!-- Gold hairline divider -->
+    <div style="width:36mm;height:1pt;background:#C29B5C;
+      margin:16mm auto 14mm;"></div>
+
+    <!-- Editorial sign-off — partnership-focused -->
+    <p style="font-family:'Cairo','Tajawal','Segoe UI Arabic',sans-serif;
+      font-weight:400;font-size:13pt;color:#1A1A1A;line-height:2;
+      margin:0 auto;max-width:140mm;text-align:start;font-style:italic;
+      direction:rtl;">
+      الأرقامُ في هذا العَرض ليست سِعراً لخدمةٍ تنتهي عند التَسليم —
+      بل التزامٌ مالي صَريحٌ من <strong style="color:#0F2A47;font-style:normal;
+      font-weight:700;">شركة الخبراء للحلول التقنيّة</strong> ببناءِ علاقةٍ تَمتدّ
+      سَنواتٍ قادمة مع نادي الاتّحاد. ما نُقدّمه اليومَ هو الأساسُ؛ وما يَلي
+      هو شراكةٌ في النموّ، والصيانة، والتطوير، والابتكار — بِسعرٍ ثابتٍ ووضوحٍ كامل.
+    </p>
+
+    <!-- Closing call to action -->
+    <p style="font-family:'Reem Kufi','Cairo','Tajawal',sans-serif;font-weight:600;
+      font-size:14.5pt;color:#0F2A47;line-height:1.7;margin:10mm auto 0;
+      max-width:130mm;text-align:center;letter-spacing:-0.3px;">
+      عَرضُنا صالحٌ حتّى
+      <span style="color:#C29B5C;">١٣ يوليو ٢٠٢٦</span>
+      — وفريقُنا في انتظارِ تَوقيعِكم.
+    </p>
+
+    <!-- Latin italic flourish -->
+    <p style="font-family:'Cormorant Garamond','EB Garamond','Playfair Display',Georgia,serif;
+      font-style:italic;font-weight:400;font-size:14pt;color:#7B7268;
+      margin:8mm auto 0;text-align:center;letter-spacing:0.5px;direction:ltr;">
+      A partnership built to last — priced with transparency.
+    </p>
+  </div>
+
+  <!-- BOTTOM: 3-column footer + copyright -->
+  <div style="position:relative;z-index:1;direction:rtl;">
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8mm;
+      padding-top:8mm;border-top:0.5pt solid #C29B5C;align-items:center;">
+
+      <!-- LEFT COLUMN: doc metadata -->
+      <div style="text-align:start;font-family:'IBM Plex Mono',ui-monospace,monospace;
+        font-size:6.5pt;letter-spacing:1.2px;color:#7B7268;line-height:2;
+        text-transform:uppercase;direction:ltr;white-space:nowrap;overflow:hidden;">
+        <div style="color:#0F2A47;font-weight:600;">DOC · 2026-05-001-FIN</div>
+        <div>REV · 1.0 · MAY 2026</div>
+        <div>VOL · II OF II · FINANCIAL</div>
+        <div style="color:#C29B5C;">VALID UNTIL 13 JUL 2026</div>
+      </div>
+
+      <!-- CENTER: Code Experts footer logo (16mm per CLAUDE.md §6) -->
+      <div style="text-align:center;direction:ltr;">
+        <img src="../assets/code-experts-logo.svg" alt="Code Experts"
+          style="width:16mm;height:auto;display:inline-block;" />
+        <div style="margin-top:3mm;font-family:'Cormorant Garamond','EB Garamond',Georgia,serif;
+          font-style:italic;font-weight:400;font-size:9pt;color:#7B7268;
+          letter-spacing:0.5px;">Code Experts · IT Solutions</div>
+      </div>
+
+      <!-- RIGHT: contact -->
+      <div style="text-align:end;font-family:'IBM Plex Mono',ui-monospace,monospace;
+        font-size:6.5pt;letter-spacing:1.2px;color:#7B7268;line-height:2;
+        text-transform:uppercase;direction:ltr;white-space:nowrap;overflow:hidden;">
+        <div style="color:#0F2A47;font-weight:600;">TEL · +218 91 101 9111</div>
+        <div>MAIL · INFO@CODEEXPERTS.LY</div>
+        <div>WEB · CODEEXPERTS.LY</div>
+        <div style="color:#C29B5C;">BEN ASHOUR · TRIPOLI · LIBYA</div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div style="margin-top:6mm;padding-top:4mm;border-top:0.3pt solid #D4CDC0;
+      font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:6.5pt;
+      letter-spacing:2.5px;color:#7B7268;text-align:center;direction:ltr;">
+      &copy; 2026 CODE EXPERTS IT SOLUTIONS — ALL RIGHTS RESERVED · جميع الحقوق محفوظة
+    </div>
+  </div>
+
+</section>
+</body></html>

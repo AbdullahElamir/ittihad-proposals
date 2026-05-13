@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .boxAcc { fill: #5DACA8; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 16px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .lblSmW{ font-size: 12px; fill: #E7F2F1; text-anchor: middle; }
+      .lblBd { font-size: 14px; fill: #0F2A47; text-anchor: middle; font-weight: 700; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 3; fill: none; }
+      .stage { font-size: 13px; fill: #5DACA8; text-anchor: middle; font-weight: 700; letter-spacing: 1px; }
+    </style>
+  </defs>
+
+  <text x="600" y="35" class="title" text-anchor="middle">المسار المالي الكامل — من المشجّع إلى التقارير الموحّدة</text>
+  <text x="600" y="60" class="lblSm" text-anchor="middle">تتبّع كل ريال — لا توجد عمليّة بلا أثر</text>
+
+  <!-- Stage labels (top row, RTL aligned) -->
+  <text x="1090" y="100" class="stage">1 · المصدر</text>
+  <text x="870"  y="100" class="stage">2 · القناة</text>
+  <text x="650"  y="100" class="stage">3 · التسجيل</text>
+  <text x="430"  y="100" class="stage">4 · الإدارة</text>
+  <text x="210"  y="100" class="stage">5 · التقارير</text>
+
+  <!-- 1. Source: fan pays -->
+  <rect x="980" y="120" width="220" height="160" rx="8" class="boxAcc"/>
+  <text x="1090" y="155" class="lblW">مشجّع يدفع</text>
+  <text x="1090" y="180" class="lblSmW">عضويّة</text>
+  <text x="1090" y="200" class="lblSmW">تبرّع</text>
+  <text x="1090" y="220" class="lblSmW">شراء من المتجر</text>
+  <text x="1090" y="245" class="lblSmW">رعاية فعاليّة</text>
+  <text x="1090" y="265" class="lblSmW">دفع رسوم</text>
+
+  <!-- 2. Payment gateway -->
+  <rect x="760" y="120" width="220" height="160" rx="8" class="boxHi"/>
+  <text x="870" y="155" class="lbl" font-weight="700">بوّابة الدفع</text>
+  <text x="870" y="180" class="lblSm">Plutu / MPGS</text>
+  <text x="870" y="205" class="lblSm">Adfali · Sadad</text>
+  <text x="870" y="225" class="lblSm">Edahab · Card</text>
+  <text x="870" y="252" class="lblSm">SSL/TLS + 3D Secure</text>
+  <text x="870" y="272" class="lblSm">Webhook → API</text>
+
+  <!-- 3. Transaction ledger -->
+  <rect x="540" y="120" width="220" height="160" rx="8" class="boxDk"/>
+  <text x="650" y="155" class="lblW">API الزعيم</text>
+  <text x="650" y="180" class="lblSmW">تحقّق Webhook</text>
+  <text x="650" y="205" class="lblSmW">إنشاء معاملة</text>
+  <text x="650" y="225" class="lblSmW">سجلّ المعاملات</text>
+  <text x="650" y="245" class="lblSmW">Transactions Ledger</text>
+  <text x="650" y="265" class="lblSmW">SQL Server — Immutable</text>
+
+  <!-- 4. Finance Admin Dashboard -->
+  <rect x="320" y="120" width="220" height="160" rx="8" class="boxHi"/>
+  <text x="430" y="155" class="lbl" font-weight="700">لوحة الإدارة الماليّة</text>
+  <text x="430" y="180" class="lblSm">عرض حيّ للمعاملات</text>
+  <text x="430" y="205" class="lblSm">تصنيف الإيرادات</text>
+  <text x="430" y="225" class="lblSm">مطابقة بنكيّة</text>
+  <text x="430" y="245" class="lblSm">تسوية الفروقات</text>
+  <text x="430" y="265" class="lblSm">صلاحيّات Finance + CFO</text>
+
+  <!-- 5. Reports / Odoo -->
+  <rect x="100" y="120" width="220" height="160" rx="8" class="box"/>
+  <text x="210" y="155" class="lblBd">التقارير الموحّدة</text>
+  <text x="210" y="180" class="lblSm">تقرير يومي</text>
+  <text x="210" y="200" class="lblSm">تقرير شهري</text>
+  <text x="210" y="220" class="lblSm">إقفال السنة</text>
+  <text x="210" y="240" class="lblSm">ترحيل إلى Odoo</text>
+  <text x="210" y="265" class="lblSm">PDF · Excel · CSV</text>
+
+  <!-- Big RTL arrows between stages -->
+  <line x1="980" y1="200" x2="980" y2="200" class="ar"/>
+  <path d="M 980 200 L 980 200" />
+  <line x1="980" y1="200" x2="985" y2="200" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <line x1="975" y1="200" x2="985" y2="200" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="755" y1="200" x2="765" y2="200" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="535" y1="200" x2="545" y2="200" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="315" y1="200" x2="325" y2="200" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Arrow connectors (RTL stage transitions) -->
+  <path d="M 980 200 L 980 200" />
+  <line x1="978" y1="200" x2="983" y2="200" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Money trail under the row: thick teal arrows -->
+  <g>
+    <!-- Source -> Gateway -->
+    <line x1="978" y1="320" x2="982" y2="320" class="ar" />
+    <line x1="978" y1="320" x2="772" y2="320" stroke="#5DACA8" stroke-width="4" fill="none" marker-end="url(#arrowTeal)"/>
+    <text x="875" y="312" class="lblSm" fill="#0F2A47">معاملة مشفّرة</text>
+
+    <line x1="758" y1="320" x2="552" y2="320" stroke="#5DACA8" stroke-width="4" fill="none" marker-end="url(#arrowTeal)"/>
+    <text x="655" y="312" class="lblSm" fill="#0F2A47">Webhook نتيجة</text>
+
+    <line x1="538" y1="320" x2="332" y2="320" stroke="#5DACA8" stroke-width="4" fill="none" marker-end="url(#arrowTeal)"/>
+    <text x="435" y="312" class="lblSm" fill="#0F2A47">قراءة سجلّ</text>
+
+    <line x1="318" y1="320" x2="112" y2="320" stroke="#5DACA8" stroke-width="4" fill="none" marker-end="url(#arrowTeal)"/>
+    <text x="215" y="312" class="lblSm" fill="#0F2A47">تصدير/ترحيل</text>
+  </g>
+
+  <!-- Output stack at bottom -->
+  <text x="600" y="395" class="lbl" font-weight="700" text-anchor="middle">مخرجات إدارة النادي — كلّ مستخدم وفق صلاحيّاته</text>
+
+  <rect x="60" y="420" width="220" height="110" rx="8" class="boxHi"/>
+  <text x="170" y="450" class="lblBd">CFO / المدير المالي</text>
+  <text x="170" y="475" class="lblSm">لوحة كاملة</text>
+  <text x="170" y="495" class="lblSm">إيرادات شاملة</text>
+  <text x="170" y="515" class="lblSm">تحليلات اتّجاهات</text>
+
+  <rect x="300" y="420" width="220" height="110" rx="8" class="boxHi"/>
+  <text x="410" y="450" class="lblBd">المحاسبة</text>
+  <text x="410" y="475" class="lblSm">قيود يوميّة</text>
+  <text x="410" y="495" class="lblSm">تسوية بنكيّة</text>
+  <text x="410" y="515" class="lblSm">ترحيل إلى Odoo</text>
+
+  <rect x="540" y="420" width="220" height="110" rx="8" class="boxHi"/>
+  <text x="650" y="450" class="lblBd">الإدارة العامّة</text>
+  <text x="650" y="475" class="lblSm">إيرادات اليوم</text>
+  <text x="650" y="495" class="lblSm">عدد التبرّعات</text>
+  <text x="650" y="515" class="lblSm">عدد المنتسبين</text>
+
+  <rect x="780" y="420" width="220" height="110" rx="8" class="boxHi"/>
+  <text x="890" y="450" class="lblBd">المراجعة الداخليّة</text>
+  <text x="890" y="475" class="lblSm">سجلّ تدقيق</text>
+  <text x="890" y="495" class="lblSm">من فعل ماذا ومتى</text>
+  <text x="890" y="515" class="lblSm">Audit Log</text>
+
+  <rect x="1020" y="420" width="160" height="110" rx="8" class="boxDk"/>
+  <text x="1100" y="450" class="lblW">المشجّع</text>
+  <text x="1100" y="475" class="lblSmW">إيصالات</text>
+  <text x="1100" y="495" class="lblSmW">رصيد النقاط</text>
+  <text x="1100" y="515" class="lblSmW">سجلّ شراء</text>
+
+  <!-- Lessons highlights -->
+  <rect x="100" y="560" width="1000" height="80" rx="10" class="boxHi"/>
+  <text x="600" y="588" class="lblBd">شفافيّة كاملة — ما يدخل خزينة النادي يساوي بالضبط ما يُسجَّل في الدفتر</text>
+  <text x="600" y="612" class="lblSm">لا توجد إيرادات خارج النظام · لا توجد فجوة بين بوّابة الدفع والمحاسبة · صلاحيّات دقيقة لكلّ دور</text>
+  <text x="600" y="632" class="lblSm">يلائم متطلّبات الحوكمة الماليّة الحديثة للأندية الرياضيّة</text>
+
+  <text x="600" y="675" class="cap">المسار يقرأ من اليمين لليسار: مشجّع → بوّابة → سجلّ → إدارة → تقارير</text>
+</svg>

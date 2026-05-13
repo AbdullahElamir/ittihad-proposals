@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 15px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2.5; fill: none; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" class="title" text-anchor="middle">رحلة تصويت "أفضل لاعب في المباراة"</text>
+
+  <!-- Step 1: match ends -->
+  <rect x="1000" y="100" width="180" height="80" rx="8" class="boxDk"/>
+  <text x="1090" y="135" class="lblW">المباراة تنتهي</text>
+  <text x="1090" y="158" class="lblSm" fill="#E7F2F1">صفّارة النهاية</text>
+
+  <!-- Step 2: 24h voting window opens -->
+  <rect x="780" y="100" width="180" height="80" rx="8" class="boxHi"/>
+  <text x="870" y="125" class="lbl" font-weight="700">فتح نافذة التصويت</text>
+  <text x="870" y="148" class="lblSm">مدّتها 24 ساعة</text>
+  <text x="870" y="168" class="lblSm">قبل غلق رسمي</text>
+
+  <!-- Step 3: fan votes -->
+  <rect x="560" y="100" width="180" height="80" rx="8" class="box"/>
+  <text x="650" y="135" class="lbl" font-weight="700">المشجّع يصوّت</text>
+  <text x="650" y="158" class="lblSm">اختيار لاعب من القائمة</text>
+
+  <!-- Step 4: API records -->
+  <rect x="340" y="100" width="180" height="80" rx="8" class="box"/>
+  <text x="430" y="135" class="lbl" font-weight="700">تسجيل التصويت</text>
+  <text x="430" y="158" class="lblSm">API + Redis</text>
+
+  <!-- Step 5: instant results -->
+  <rect x="120" y="100" width="180" height="80" rx="8" class="boxHi"/>
+  <text x="210" y="135" class="lbl" font-weight="700">نتائج فوريّة</text>
+  <text x="210" y="158" class="lblSm">رسوم بيانيّة حيّة</text>
+
+  <line x1="1000" y1="140" x2="960" y2="140" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="780" y1="140" x2="740" y2="140" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="560" y1="140" x2="520" y2="140" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="340" y1="140" x2="300" y2="140" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Loop back: closes window after 24h -->
+  <path d="M 210 180 Q 210 270 500 270 L 870 270 Q 870 270 870 180" class="ar" marker-end="url(#arrowTeal)" stroke-dasharray="6,4"/>
+  <text x="540" y="262" class="lblSm" fill="#0F2A47">بعد 24 ساعة → إغلاق التصويت</text>
+
+  <!-- Step 6: announcement + loyalty -->
+  <rect x="700" y="350" width="220" height="100" rx="8" class="boxHi"/>
+  <text x="810" y="385" class="lbl" font-weight="700">إعلان أفضل لاعب</text>
+  <text x="810" y="410" class="lblSm">على الصفحة الرئيسيّة</text>
+  <text x="810" y="430" class="lblSm">والشبكات الاجتماعيّة</text>
+
+  <rect x="280" y="350" width="220" height="100" rx="8" class="box"/>
+  <text x="390" y="385" class="lbl" font-weight="700">نقاط ولاء للمشاركة</text>
+  <text x="390" y="410" class="lblSm">تُضاف لكل مشجّع</text>
+  <text x="390" y="430" class="lblSm">PointRule: BestPlayerVoteParticipation</text>
+
+  <path d="M 210 180 Q 210 280 400 280 L 540 280 Q 600 280 600 350" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 210 180 Q 210 280 380 280 L 390 280 Q 390 280 390 350" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <text x="600" y="565" class="cap">يَضمن النظام صوتاً واحداً لكل مشجّع بفضل التحقّق عبر JWT — وكلّ صوت يُكسِب نقاطاً</text>
+</svg>

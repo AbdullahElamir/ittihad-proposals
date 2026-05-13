@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .boxBz { fill: #CD7F32; stroke: #0F2A47; stroke-width: 2; }
+      .boxSv { fill: #C0C0C0; stroke: #0F2A47; stroke-width: 2; }
+      .boxGd { fill: #F4C44A; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 15px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #0F2A47; text-anchor: middle; }
+      .lblMu { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2.5; fill: none; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" class="title" text-anchor="middle">رحلة شراء العضويّة الرقميّة</text>
+
+  <!-- Step 1: Choose plan (3 mini boxes) -->
+  <rect x="940" y="100" width="220" height="200" rx="8" class="box"/>
+  <text x="1050" y="125" class="lbl" font-weight="700">اختيار الباقة</text>
+
+  <rect x="960" y="140" width="180" height="40" rx="6" class="boxBz"/>
+  <text x="1050" y="167" class="lblSm" fill="#FFFFFF" font-weight="700">برونزي</text>
+
+  <rect x="960" y="190" width="180" height="40" rx="6" class="boxSv"/>
+  <text x="1050" y="217" class="lblSm" font-weight="700">فضّي</text>
+
+  <rect x="960" y="240" width="180" height="40" rx="6" class="boxGd"/>
+  <text x="1050" y="267" class="lblSm" font-weight="700">ذهبي</text>
+
+  <!-- Step 2: payment gateway -->
+  <rect x="700" y="160" width="200" height="100" rx="8" class="boxHi"/>
+  <text x="800" y="195" class="lbl" font-weight="700">بوّابة الدفع</text>
+  <text x="800" y="220" class="lblMu">Plutu / MPGS</text>
+  <text x="800" y="240" class="lblMu">Adfali · Sadad · Edahab · Card</text>
+
+  <!-- Step 3: verification -->
+  <rect x="470" y="170" width="190" height="80" rx="8" class="box"/>
+  <text x="565" y="205" class="lbl" font-weight="700">تحقّق المعاملة</text>
+  <text x="565" y="227" class="lblMu">Callback من البنك</text>
+
+  <!-- Step 4: activation -->
+  <rect x="240" y="170" width="190" height="80" rx="8" class="boxDk"/>
+  <text x="335" y="205" class="lblW">تفعيل العضويّة</text>
+  <text x="335" y="230" class="lblSm" fill="#E7F2F1">تحديث حالة العضو</text>
+
+  <!-- Arrows: RTL chain -->
+  <line x1="940" y1="200" x2="900" y2="200" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="700" y1="210" x2="660" y2="210" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="470" y1="210" x2="430" y2="210" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Branch downward to two outputs -->
+  <path d="M 335 250 Q 335 330 460 330 L 540 330 Q 590 330 590 380" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 335 250 Q 335 330 200 330 L 130 330 Q 80 330 80 380" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Output 1: digital card -->
+  <rect x="490" y="395" width="200" height="100" rx="8" class="boxHi"/>
+  <text x="590" y="430" class="lbl" font-weight="700">بطاقة عضوية رقميّة جديدة</text>
+  <text x="590" y="455" class="lblMu">QR + رقم عضو + صلاحيّة</text>
+  <text x="590" y="475" class="lblMu">Apple/Google Wallet</text>
+
+  <!-- Output 2: exclusive benefits -->
+  <rect x="-10" y="395" width="200" height="100" rx="8" class="boxHi"/>
+  <text x="90" y="430" class="lbl" font-weight="700">مزايا حصريّة</text>
+  <text x="90" y="455" class="lblMu">خصومات المتجر + أولويّة</text>
+  <text x="90" y="475" class="lblMu">دخول مباريات وفعاليّات</text>
+
+  <!-- Side note: 100 loyalty points -->
+  <rect x="230" y="395" width="220" height="100" rx="8" class="box"/>
+  <text x="340" y="430" class="lbl" font-weight="700">نقاط ولاء إضافيّة</text>
+  <text x="340" y="455" class="lblMu">تُضاف تلقائياً</text>
+  <text x="340" y="475" class="lblMu">بحسب قيمة الباقة</text>
+  <path d="M 335 250 L 335 395" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <text x="600" y="565" class="cap">تتمّ كامل العمليّة في أقلّ من 60 ثانية — مدفوعات مؤمّنة وفق معايير PCI-DSS</text>
+</svg>

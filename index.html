@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Code Experts × نادي الاتحاد — العروض الرسمية</title>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;700;800&family=Cairo:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:#0F2A47;
+  min-height:100vh;
+  font-family:'Cairo',sans-serif;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 20px;
+  position:relative;overflow:hidden;
+}
+/* Background ornament */
+body::before{
+  content:'CE';
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:600px;color:rgba(255,255,255,0.03);line-height:1;pointer-events:none;
+  letter-spacing:-20px;
+}
+.top-bar{
+  display:flex;align-items:center;gap:16px;margin-bottom:56px;
+}
+.top-bar img{height:56px;width:auto;}
+.divider{width:1px;height:48px;background:rgba(255,255,255,0.2);}
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;
+  color:#C29B5C;text-transform:uppercase;text-align:center;margin-bottom:16px;
+}
+h1{
+  font-family:'Reem Kufi',sans-serif;font-weight:800;font-size:40px;
+  color:#F5F0E6;text-align:center;line-height:1.3;margin-bottom:12px;
+}
+.subtitle{
+  font-family:'Cairo',sans-serif;font-weight:300;font-size:16px;
+  color:rgba(255,255,255,0.55);text-align:center;margin-bottom:56px;
+  line-height:1.7;max-width:480px;
+}
+.cards{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:720px;width:100%;
+  margin-bottom:48px;
+}
+@media(max-width:600px){.cards{grid-template-columns:1fr;}}
+.card{
+  background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+  border-radius:4px;padding:32px 28px;text-decoration:none;
+  transition:all 0.25s;display:block;position:relative;overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:#C29B5C;transform:scaleX(0);transform-origin:right;
+  transition:transform 0.3s;
+}
+.card:hover{background:rgba(255,255,255,0.1);border-color:rgba(201,155,92,0.4);transform:translateY(-2px);}
+.card:hover::before{transform:scaleX(1);}
+.card-tag{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;
+  color:#C29B5C;text-transform:uppercase;margin-bottom:12px;
+}
+.card-title{
+  font-family:'Reem Kufi',sans-serif;font-weight:700;font-size:22px;
+  color:#F5F0E6;margin-bottom:8px;line-height:1.3;
+}
+.card-desc{
+  font-family:'Cairo',sans-serif;font-weight:300;font-size:13.5px;
+  color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:20px;
+}
+.card-meta{
+  display:flex;gap:12px;flex-wrap:wrap;
+}
+.meta-pill{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1.5px;
+  color:rgba(255,255,255,0.35);border:1px solid rgba(255,255,255,0.12);
+  padding:3px 8px;border-radius:2px;text-transform:uppercase;
+}
+.card-arrow{
+  position:absolute;bottom:24px;left:24px;  /* left = visual right in RTL */
+  font-size:18px;color:rgba(201,155,92,0.5);transition:all 0.25s;
+}
+.card:hover .card-arrow{color:#C29B5C;transform:translateX(-4px);}
+.footer-line{
+  font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;
+  color:rgba(255,255,255,0.2);text-transform:uppercase;text-align:center;
+  border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;max-width:480px;width:100%;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <img src="assets/code-experts-logo.svg" alt="Code Experts" style="filter:brightness(0) invert(0.9);"/>
+  <div class="divider"></div>
+  <img src="assets/club-logo.png" alt="نادي الاتحاد" style="height:52px;border-radius:50%;background:rgba(255,255,255,0.1);padding:4px;"/>
+</div>
+
+<div class="eyebrow">PROPOSAL REVIEW · مراجعة العروض · مايو 2026</div>
+<h1>المنظومة الرقميّة الموحّدة<br/>لنادي الاتحاد</h1>
+<p class="subtitle">عروض Code Experts الرسميّة — للمراجعة الداخليّة قبل التسليم النهائي</p>
+
+<div class="cards">
+
+  <a href="tech/" class="card">
+    <div class="card-tag">VOL. I — TECHNICAL</div>
+    <div class="card-title">العرض الفنّي</div>
+    <div class="card-desc">
+      المعمارية الكاملة، الأنظمة المركزيّة، التكاملات، الإحصائيّات الحقيقيّة، ومخطّطات التدفّق — 100+ صفحة.
+    </div>
+    <div class="card-meta">
+      <span class="meta-pill">32 قسم</span>
+      <span class="meta-pill">14 مخطّط</span>
+      <span class="meta-pill">20 شاشة</span>
+      <span class="meta-pill">4 ملاحق</span>
+    </div>
+    <div class="card-arrow">←</div>
+  </a>
+
+  <a href="financial/" class="card">
+    <div class="card-tag">VOL. II — FINANCIAL</div>
+    <div class="card-title">العرض المالي</div>
+    <div class="card-desc">
+      التكلفة التفصيليّة، جدول الدفعات، باقات الدعم، شروط التعاقد وصفحة التوقيع.
+    </div>
+    <div class="card-meta">
+      <span class="meta-pill">650,000 د.ل</span>
+      <span class="meta-pill">5 دفعات</span>
+      <span class="meta-pill">3 باقات دعم</span>
+    </div>
+    <div class="card-arrow">←</div>
+  </a>
+
+</div>
+
+<div class="footer-line">
+  CODE EXPERTS IT SOLUTIONS · BEN ASHOUR, TRIPOLI · INFO@CODEEXPERTS.LY · +218 91 101 9111
+</div>
+
+</body>
+</html>

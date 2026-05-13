@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 550" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 16px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .lblBd { font-size: 14px; fill: #0F2A47; text-anchor: middle; font-weight: 700; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2.5; fill: none; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" class="title" text-anchor="middle">تسجيل دخول عبر الشبكات الاجتماعيّة — Google &amp; Facebook</text>
+
+  <!-- Google block -->
+  <rect x="940" y="100" width="220" height="120" rx="8" class="box"/>
+  <text x="1050" y="140" class="lblBd">Google</text>
+  <text x="1050" y="165" class="lblSm">OAuth 2.0</text>
+  <text x="1050" y="185" class="lblSm">/auth/google</text>
+  <text x="1050" y="205" class="lblSm">يُعيد ID Token + Email</text>
+
+  <!-- Facebook block -->
+  <rect x="940" y="260" width="220" height="120" rx="8" class="box"/>
+  <text x="1050" y="300" class="lblBd">Facebook</text>
+  <text x="1050" y="325" class="lblSm">OAuth 2.0</text>
+  <text x="1050" y="345" class="lblSm">/auth/facebook</text>
+  <text x="1050" y="365" class="lblSm">يُعيد Access Token + Profile</text>
+
+  <!-- Identity validation layer -->
+  <rect x="540" y="160" width="280" height="180" rx="8" class="boxHi"/>
+  <text x="680" y="195" class="lbl" font-weight="700">طبقة تحقّق الهويّة</text>
+  <text x="680" y="220" class="lblSm">JWT Identity Validation</text>
+  <text x="680" y="245" class="lblSm">إثبات صحّة Token</text>
+  <text x="680" y="270" class="lblSm">استخراج البريد + الاسم</text>
+  <text x="680" y="295" class="lblSm">منع إعادة استخدام التوكنات</text>
+  <text x="680" y="320" class="lblSm">reCAPTCHA Enterprise</text>
+
+  <line x1="940" y1="160" x2="820" y2="225" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="940" y1="320" x2="820" y2="275" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Link to existing account -->
+  <rect x="270" y="160" width="220" height="180" rx="8" class="boxDk"/>
+  <text x="380" y="200" class="lblW">ربط بحساب الزعيم</text>
+  <text x="380" y="225" class="lblSm" fill="#E7F2F1">إن وُجد بريد مطابق → ربط</text>
+  <text x="380" y="250" class="lblSm" fill="#E7F2F1">وإلا → إنشاء حساب جديد</text>
+  <text x="380" y="275" class="lblSm" fill="#E7F2F1">وإصدار JWT داخلي</text>
+  <text x="380" y="300" class="lblSm" fill="#E7F2F1">تحويل المشجّع إلى</text>
+  <text x="380" y="320" class="lblSm" fill="#E7F2F1">إكمال الملف الشخصي</text>
+
+  <line x1="540" y1="250" x2="490" y2="250" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Final state -->
+  <rect x="40" y="190" width="200" height="120" rx="8" class="boxHi"/>
+  <text x="140" y="225" class="lbl" font-weight="700">مشجّع مسجّل</text>
+  <text x="140" y="250" class="lblSm">JWT صادر</text>
+  <text x="140" y="270" class="lblSm">بطاقة عضوية مفعّلة</text>
+  <text x="140" y="295" class="lblSm">دخول مستمرّ</text>
+
+  <line x1="270" y1="250" x2="240" y2="250" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <text x="600" y="420" class="lblBd" text-anchor="middle">يُقلّل الاحتكاك: لا حاجة لكلمة سرّ منفصلة — ولا OTP إلزامي للمستخدمين القادمين من حسابات موثّقة</text>
+  <text x="600" y="450" class="lblSm" text-anchor="middle">يحتفظ النظام بدفتر "قنوات تواصل" (Email/Phone/Social) لكل مستخدم بشكل موحّد</text>
+
+  <text x="600" y="525" class="cap">تكامل آمن وفق معايير Google / Meta — مع طبقة تحقّق محليّة إضافيّة</text>
+</svg>

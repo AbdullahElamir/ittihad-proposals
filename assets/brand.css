@@ -1,0 +1,1148 @@
+/* ============================================================
+   Code Experts IT Solutions — Brand System v3.1
+   Aesthetic Direction: "ITTIHAD GAZETTE"
+   ----------------------------------------------------------
+   High-end Arabic editorial magazine x Western consulting
+   firm typography. Restrained, prestigious, trustworthy,
+   serious — distinctly Arabic, globally sophisticated.
+   ----------------------------------------------------------
+   Foundation: Cream paper, generous leading, hairline gold,
+   typography-led statistics, no scoreboard panels.
+   ----------------------------------------------------------
+   Used by: Technical Proposal + Financial Proposal
+   Client:  the Ittihad Club — Tripoli
+   ============================================================ */
+
+/* ---- Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Manrope:wght@300;400;500;600&family=Reem+Kufi:wght@500;600;700&family=Cairo:wght@400;500;700&family=Tajawal:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+
+:root {
+  /* ---- Core palette ---- */
+  --ink-deep:       #0B1F3A;     /* deepest navy, true depth */
+  --navy:           #0F2A47;     /* primary navy */
+  --teal:           #3FAAA6;     /* Code Experts teal, exact from logo */
+  --gold:           #C29B5C;     /* champagne gold — accents only */
+  --gold-soft:      #E8D6B0;     /* gold tint for backgrounds */
+  --paper:          #F5F0E6;     /* cream paper — the foundation */
+  --paper-warm:     #EFE9DC;     /* warmer panel background */
+  --ink:            #1A1A1A;     /* true near-black body text */
+  --muted:          #7B7268;     /* warm gray secondary text */
+  --hairline:       #D4CDC0;     /* warm border */
+  --ok:             #2D7A6E;     /* refined success teal */
+  --warn:           #BD7A2A;     /* refined warning amber */
+  --err:            #A8453F;     /* refined error red */
+
+  /* ---- Convenience aliases used by section partials ---- */
+  --bg:             #F5F0E6;
+  --bg-soft:        #EFE9DC;
+  --line:           #D4CDC0;
+  --line-soft:      #E4DDCF;
+  --ink-2:          #2A2A2A;
+  --ink-3:          #4A4A4A;
+  --danger:         #A8453F;
+
+  /* ---- Typography stacks (v3.1: richer Arabic fallbacks) ---- */
+  --font-display-ar: 'Reem Kufi', 'Cairo', 'Segoe UI Arabic', 'Tahoma', sans-serif;
+  --font-body-ar:    'Cairo', 'Tajawal', 'Segoe UI Arabic', 'Tahoma', sans-serif;
+  --font-display-en: 'Cormorant Garamond', 'Times New Roman', Georgia, serif;
+  --font-body-en:    'Manrope', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:       'IBM Plex Mono', 'Menlo', 'Consolas', monospace;
+
+  /* ---- Editorial scale (print mm/pt for fidelity) ---- */
+  --space-1:  2mm;
+  --space-2:  4mm;
+  --space-3:  6mm;
+  --space-4:  8mm;
+  --space-5:  12mm;
+  --space-6:  16mm;
+  --space-7:  24mm;
+  --space-8:  32mm;
+
+  /* ---- Hairlines ---- */
+  --hairline-w: 0.5pt;
+  --hairline-w-bold: 1pt;
+
+  /* ---- Body leading (v3.1: Arabic needs more breathing room) ---- */
+  --leading-ar-body: 1.95;
+}
+
+/* ============================================================
+   Page setup — print first
+   Cover + part-divider are absolute-positioned full-bleed,
+   so @page margins stay at 0 and per-element padding is used.
+   ============================================================ */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body-ar);
+  font-weight: 400;
+  font-size: 12pt;
+  line-height: var(--leading-ar-body);
+  direction: rtl;
+  text-align: start;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+  position: relative;
+}
+
+/* Subtle paper grain — DISABLED for PDF size budget (was ~120 MB of soft-mask tiles).
+   The fixed full-page opacity:0.025 overlay forced Chromium to emit a page-sized
+   FlateDecode alpha mask for every page, blowing the §8 40 MB budget. Cream paper
+   background (--paper) on body already carries the editorial warmth on its own. */
+/*
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+*/
+
+/* Latin runs inside Arabic copy */
+:lang(en), .en, [lang="en"] {
+  font-family: var(--font-body-en);
+  font-feature-settings: "kern" 1, "liga" 1, "ss01" 1;
+}
+
+/* ============================================================
+   Headings — editorial hierarchy
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display-ar);
+  color: var(--navy);
+  font-weight: 700;
+  margin: 0 0 var(--space-3) 0;
+  line-height: 1.2;
+  letter-spacing: -0.1px;
+}
+
+/* H1 — very large editorial title */
+h1, .h1 {
+  font-family: var(--font-display-ar);
+  font-weight: 700;
+  font-size: 38pt;
+  line-height: 1.15;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+  margin: 0 0 var(--space-5) 0;
+}
+
+/* H2 — section title with gold hairline above + tiny mono label below */
+h2, .h2 {
+  font-family: var(--font-display-ar);
+  font-weight: 700;
+  font-size: 28pt;
+  line-height: 1.2;
+  color: var(--navy);
+  letter-spacing: -0.3px;
+  margin: var(--space-6) 0 var(--space-4) 0;
+  position: relative;
+  padding-top: var(--space-4);
+}
+
+h2::before, .h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60mm;
+  height: 1pt;
+  background: var(--gold);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+h2[data-label]::after, .h2[data-label]::after {
+  content: attr(data-label);
+  display: block;
+  margin-top: var(--space-2);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* H3 — subsection with vertical gold bar on the right (v3.1: heavier weight, tighter rhythm) */
+h3, .h3 {
+  font-family: var(--font-display-ar);
+  font-weight: 700;
+  font-size: 18pt;
+  line-height: 1.25;
+  color: var(--navy);
+  letter-spacing: -0.2px;
+  margin: 12mm 0 4mm 0;
+  position: relative;
+  padding-top: 5mm;
+  padding-right: var(--space-3);
+}
+
+h3::before, .h3::before {
+  content: "";
+  position: absolute;
+  top: 5mm;
+  right: 0;
+  width: 1px;
+  height: 10mm;
+  background: var(--gold);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* H4–H6 — supporting hierarchy */
+h4, .h4 {
+  font-family: var(--font-display-ar);
+  font-weight: 600;
+  font-size: 14pt;
+  color: var(--navy);
+  margin: var(--space-4) 0 var(--space-2) 0;
+}
+
+h5, .h5 {
+  font-family: var(--font-body-ar);
+  font-weight: 700;
+  font-size: 12pt;
+  letter-spacing: 0.2px;
+  color: var(--navy);
+  margin: var(--space-3) 0 var(--space-1) 0;
+}
+
+h6, .h6 {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 9pt;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: var(--space-3) 0 var(--space-1) 0;
+}
+
+/* ============================================================
+   Body copy — paragraphs, lead, lists, links
+   v3.1: text-align: start (NOT justify) for Arabic.
+   v3.1: line-height bumped to 1.95 for stacked diacritics.
+   ============================================================ */
+p {
+  margin: 0 0 var(--space-3) 0;
+  color: var(--ink);
+  font-size: 12pt;
+  line-height: var(--leading-ar-body);
+  text-align: start;
+  hyphens: none;
+  orphans: 3;
+  widows: 3;
+}
+
+/* Lead — intro paragraph after a section header */
+.lead {
+  font-family: 'Cairo', sans-serif;
+  font-weight: 500;
+  font-size: 14pt;
+  line-height: 2;
+  color: var(--ink);
+  margin: 0 0 8mm 0;
+  padding-bottom: 8mm;
+  border-bottom: 0.5pt solid var(--hairline);
+  max-width: 165mm;
+  text-align: start;
+}
+
+/* Arabic strong/b should resolve to NAVY (editorial emphasis, not raw black) */
+strong, b {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+em, i {
+  font-style: italic;
+}
+
+small {
+  font-size: 10pt;
+  color: var(--muted);
+}
+
+a {
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 0.5pt solid var(--gold);
+  padding-bottom: 0.5pt;
+}
+
+a:hover {
+  color: var(--teal);
+}
+
+ul, ol {
+  margin: 0 0 var(--space-3) 0;
+  padding-inline-start: var(--space-4);
+  line-height: 1.85;
+}
+
+ul li, ol li {
+  margin-bottom: var(--space-1);
+  color: var(--ink);
+  text-align: start;
+  line-height: var(--leading-ar-body);
+}
+
+ul {
+  list-style: none;
+  padding-inline-start: var(--space-3);
+}
+
+ul li {
+  position: relative;
+  padding-inline-start: var(--space-3);
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  top: 0.65em;
+  inset-inline-start: 0;
+  width: 4mm;
+  height: 0.5pt;
+  background: var(--gold);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+ol {
+  list-style: none;
+  counter-reset: editorial;
+  padding-inline-start: 0;
+}
+
+ol > li {
+  counter-increment: editorial;
+  padding-inline-start: var(--space-5);
+  position: relative;
+}
+
+ol > li::before {
+  content: counter(editorial, decimal-leading-zero);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.05em;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 9pt;
+  letter-spacing: 1px;
+  color: var(--gold);
+}
+
+hr {
+  border: 0;
+  border-top: 0.5pt solid var(--hairline);
+  margin: var(--space-5) 0;
+}
+
+/* ============================================================
+   Section — primary page container
+   v3.1: padding moved to 14mm 22mm so cover + part-divider
+   can remain full-bleed under @page { margin: 0 }.
+   v4 (2026-05-13 PDF fix): removed min-height:297mm and
+   page-break-after:always — those were forcing every section
+   to consume at least one full page, producing huge blank
+   pages whenever a section's content didn't fill 297mm.
+   Page breaks now driven only by the explicit
+   .page-break-before utility class applied at assemble time.
+   ============================================================ */
+.section {
+  position: relative;
+  z-index: 1;
+  background: var(--paper);
+  /* v4 PDF fix (2026-05-13): width was 210mm + padding 22mm side, but
+     Chromium PDF printable width is 186mm (210 − 12 − 12). 210mm caused
+     the right-edge content (TOC page numbers, table right columns) to
+     be clipped. Switched to width:auto so the section fills the actual
+     printable area, with side padding reduced from 22mm → 10mm so
+     content has enough horizontal room. */
+  padding: 10mm 10mm;
+  width: auto;
+  max-width: 186mm;
+  margin: 0 auto;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* ============================================================
+   Section header — editorial cover for each part
+   v3.1: generous breathing room — 14mm top, 10mm bottom.
+   ============================================================ */
+.section-header {
+  position: relative;
+  background: var(--paper);
+  /* v4 PDF fix (2026-05-13): reduced vertical padding/margin so the
+     gallery section header + first image stay on the same page. */
+  padding: var(--space-4) 0 var(--space-3) 0;
+  margin: 6mm 0 6mm 0;
+  border: 0;
+  overflow: hidden;
+}
+
+/* Top gold hairline — 80mm wide on the right */
+.section-header::before {
+  content: "";
+  position: absolute;
+  top: var(--space-4);
+  right: 0;
+  width: 80mm;
+  height: 1pt;
+  background: var(--gold);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* Big italic section number — Cormorant Garamond, champagne gold.
+   v3.1: kerning on, ligatures off — italic Cormorant glyphs
+   would otherwise produce surprising fi/fl ligatures inside
+   compound numerals like 'III' or '02'. */
+.section-header .num {
+  position: absolute;
+  top: var(--space-3);
+  left: 0;
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-weight: 300;
+  /* v4 PDF fix: 96pt → 64pt so the section header occupies less
+     vertical space and the first item (image/screenshot/diagram)
+     fits with the header on the same printable page. */
+  font-size: 64pt;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -2px;
+  z-index: 1;
+  font-feature-settings: "kern" 1, "liga" 0;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.section-header .title,
+.section-header h1,
+.section-header h2 {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display-ar);
+  font-weight: 700;
+  /* v4 PDF fix: 32pt → 26pt; left margin 100mm → 60mm to align with the
+     smaller .num and free vertical room. */
+  font-size: 26pt;
+  line-height: 1.15;
+  color: var(--navy);
+  letter-spacing: -0.3px;
+  margin: var(--space-3) 60mm var(--space-2) 0;
+  padding: 0;
+  background: transparent;
+}
+
+.section-header .title::before,
+.section-header h1::before,
+.section-header h2::before {
+  display: none;
+}
+
+.section-header .subtitle,
+.section-header .kicker {
+  font-family: var(--font-body-en);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0 0 var(--space-3) 0;
+  max-width: 130mm;
+}
+
+.section-header .meta {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: var(--space-3);
+}
+
+/* ============================================================
+   Statistics — editorial typography (NO scoreboard panels)
+   ============================================================ */
+.stat-editorial {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  margin: 0 0 var(--space-4) 0;
+  background: transparent;
+  border: 0;
+}
+
+.stat-editorial .stat-number,
+.stat-editorial .num {
+  font-family: var(--font-display-en);
+  font-weight: 300;
+  font-size: 72pt;
+  line-height: 0.95;
+  color: var(--navy);
+  letter-spacing: -2px;
+  margin: 0;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+.stat-editorial .stat-rule,
+.stat-editorial::after {
+  content: "";
+  display: block;
+  width: 12mm;
+  height: 1px;
+  background: var(--gold);
+  margin: var(--space-2) 0;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.stat-editorial .stat-label,
+.stat-editorial .label {
+  font-family: var(--font-body-ar);
+  font-weight: 500;
+  font-size: 10pt;
+  line-height: 1.4;
+  color: var(--muted);
+  margin: 0;
+  max-width: 50mm;
+}
+
+/* Compact horizontal grouping when many stats sit side-by-side */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45mm, 1fr));
+  gap: var(--space-5);
+  margin: var(--space-4) 0;
+}
+
+/* ============================================================
+   Pull quotes — Cormorant Garamond italic with gold opening mark
+   ============================================================ */
+.pullquote,
+blockquote {
+  position: relative;
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22pt;
+  line-height: 1.4;
+  color: var(--navy);
+  margin: var(--space-5) 0;
+  padding: 0 var(--space-6) 0 0;
+  border: 0;
+  max-width: 160mm;
+}
+
+.pullquote::before,
+blockquote::before {
+  content: "\00BB";
+  position: absolute;
+  top: -12mm;
+  right: 0;
+  font-family: var(--font-display-en);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 64pt;
+  line-height: 1;
+  color: var(--gold);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.pullquote.is-arabic,
+blockquote.is-arabic {
+  font-family: var(--font-display-ar);
+  font-weight: 500;
+  font-style: normal;
+  font-size: 18pt;
+  line-height: 1.5;
+}
+
+.pullquote cite,
+blockquote cite {
+  display: block;
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 9pt;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ============================================================
+   Callouts and cards — restrained editorial panels
+   ============================================================ */
+.callout {
+  position: relative;
+  background: var(--paper-warm);
+  border: 0;
+  border-inline-start: 1pt solid var(--gold);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-4) 0;
+  font-family: var(--font-body-ar);
+  font-weight: 500;
+  font-size: 11.5pt;
+  line-height: 1.7;
+  color: var(--ink);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.callout .callout-label,
+.callout > strong:first-child {
+  display: block;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-1);
+}
+
+.callout--note {
+  border-inline-start-color: var(--gold);
+}
+
+.callout--warn {
+  border-inline-start-color: var(--warn);
+}
+
+.callout--warn .callout-label {
+  color: var(--warn);
+}
+
+.callout--err {
+  border-inline-start-color: var(--err);
+}
+
+.callout--err .callout-label {
+  color: var(--err);
+}
+
+.callout--ok {
+  border-inline-start-color: var(--ok);
+}
+
+.callout--ok .callout-label {
+  color: var(--ok);
+}
+
+.card {
+  background: var(--paper);
+  border: 0.5pt solid var(--hairline);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-3) 0;
+  position: relative;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.card .card-eyebrow,
+.card .eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-2);
+  display: block;
+}
+
+.card .card-title,
+.card h3,
+.card h4 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.card .card-title::before,
+.card h3::before {
+  display: none;
+}
+
+.card p {
+  margin-bottom: var(--space-2);
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   Grids — generous editorial layout
+   ============================================================ */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+  margin: var(--space-4) 0;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+
+.grid-asymmetric {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-5);
+  margin: var(--space-4) 0;
+}
+
+/* ============================================================
+   Tables — editorial polish (v3.1)
+   Thick navy rules top + bottom, gold underline for header,
+   hairline row separators, alternating cream rows, tabular
+   Cormorant numerals for figures.
+   ============================================================ */
+table {
+  width: 100%;
+  /* v4 PDF fix: prevent table auto-layout from overflowing the
+     printable area (the leftmost column was being clipped). */
+  max-width: 100%;
+  table-layout: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: var(--space-4) 0;
+  font-family: var(--font-body-ar);
+  font-size: 10pt;
+  line-height: 1.55;
+  background: var(--paper);
+  border-top: 1pt solid var(--navy);
+  border-bottom: 1pt solid var(--navy);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+table caption {
+  caption-side: top;
+  text-align: start;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-bottom: var(--space-2);
+}
+
+thead th,
+table th {
+  background: var(--paper-warm);
+  color: var(--navy);
+  font-family: var(--font-display-ar);
+  font-weight: 600;
+  /* v4 PDF fix: reduced font + padding so 4-column tables (Appendix A
+     API endpoints) fit within the 166mm content width and the leftmost
+     column doesn't clip at the page edge. */
+  font-size: 10pt;
+  text-align: start;
+  padding: 4mm 4mm;
+  border-top: 0;
+  border-bottom: 0.7pt solid var(--gold);
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* English column headers — uppercase Reem Kufi-equivalent with track */
+thead th.en,
+thead th[lang="en"],
+table th.en,
+table th[lang="en"] {
+  font-family: 'Reem Kufi', 'Cairo', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+tbody td,
+table td {
+  /* v4 PDF fix: reduced padding + font for 4-col table fit. */
+  padding: 3mm 4mm;
+  border-bottom: 0.3pt solid var(--hairline);
+  color: var(--ink);
+  font-family: 'Cairo', sans-serif;
+  font-weight: 400;
+  font-size: 10pt;
+  vertical-align: top;
+  text-align: start;
+}
+
+tbody tr:nth-child(odd) td {
+  background: var(--paper);
+}
+
+tbody tr:nth-child(even) td {
+  background: var(--paper-warm);
+}
+
+/* Last row: drop the hairline so the navy bottom rule reads cleanly */
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+table.is-plain tbody tr:nth-child(even) td,
+table.is-plain tbody tr:nth-child(odd) td {
+  background: var(--paper);
+}
+
+/* Numeric / figures cells — tabular Cormorant Garamond.
+   Right-aligned for RTL Arabic (visually leftmost in raw flow). */
+table.is-figures td,
+.num-cell,
+td.num,
+td.is-numeric {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 13pt;
+  font-feature-settings: "tnum" 1;
+  font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -0.2px;
+  text-align: end;
+}
+
+/* ============================================================
+   Diagram / screenshot containers
+   ============================================================ */
+.diagram,
+.screenshot,
+figure {
+  margin: var(--space-5) 0;
+  padding: 0;
+  background: var(--paper);
+  border: 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.diagram img,
+.screenshot img,
+figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0.5pt solid var(--hairline);
+  background: var(--paper);
+}
+
+.diagram figcaption,
+.screenshot figcaption,
+figure figcaption {
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 0.5pt solid var(--hairline);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 8.5pt;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.diagram figcaption .caption-label,
+.screenshot figcaption .caption-label {
+  display: inline-block;
+  margin-inline-end: var(--space-2);
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ============================================================
+   Code spans + block code (v3.1: editorial mono polish)
+   ============================================================ */
+code, kbd, samp {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10pt;
+  color: var(--navy);
+}
+
+code {
+  background: var(--paper-warm);
+  padding: 1mm 2mm;
+  border-radius: 1px;
+  border: 0.3pt solid var(--hairline);
+  color: var(--navy);
+}
+
+pre {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10pt;
+  line-height: 1.6;
+  background: var(--paper-warm);
+  padding: 6mm 8mm;
+  margin: 6mm 0;
+  border: 0;
+  border-left: 2pt solid var(--gold);
+  color: var(--ink);
+  direction: ltr;
+  text-align: left;
+  overflow-x: auto;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: inherit;
+}
+
+/* ============================================================
+   Eyebrows, kickers, metadata labels
+   ============================================================ */
+.eyebrow,
+.kicker,
+.label,
+.tag {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 8pt;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.tag {
+  display: inline-block;
+  padding: 1.5pt 6pt;
+  background: var(--paper-warm);
+  border: 0.5pt solid var(--gold);
+  color: var(--navy);
+  margin-inline-end: var(--space-1);
+  border-radius: 0;
+}
+
+.tag--navy {
+  background: var(--navy);
+  color: var(--paper);
+  border-color: var(--navy);
+}
+
+.tag--teal {
+  background: var(--paper-warm);
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+/* ============================================================
+   Section-mark — small mono label pre-introducing sections
+   (Baseline; components.css extends this with a rotated variant.)
+   ============================================================ */
+.section-mark {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8pt;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 3mm;
+}
+
+/* ============================================================
+   Editorial-rule — quiet gold rule between major blocks
+   (Baseline; components.css extends this with a centered glyph.)
+   ============================================================ */
+.editorial-rule {
+  display: block;
+  width: 36mm;
+  height: 0.7pt;
+  background: var(--gold);
+  border: 0;
+  margin: 14mm auto;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+/* ============================================================
+   Status / semantic colors
+   ============================================================ */
+.is-ok,
+.text-ok {
+  color: var(--ok);
+}
+
+.is-warn,
+.text-warn {
+  color: var(--warn);
+}
+
+.is-err,
+.text-err,
+.is-danger {
+  color: var(--err);
+}
+
+.is-muted,
+.text-muted {
+  color: var(--muted);
+}
+
+.is-navy {
+  color: var(--navy);
+}
+
+.is-gold {
+  color: var(--gold);
+}
+
+.is-teal {
+  color: var(--teal);
+}
+
+/* ============================================================
+   Utility — spacing, alignment, flow
+   ============================================================ */
+.text-start { text-align: start; }
+.text-end   { text-align: end; }
+.text-center { text-align: center; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: var(--space-1); }
+.mt-2 { margin-top: var(--space-2); }
+.mt-3 { margin-top: var(--space-3); }
+.mt-4 { margin-top: var(--space-4); }
+.mt-5 { margin-top: var(--space-5); }
+.mt-6 { margin-top: var(--space-6); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: var(--space-1); }
+.mb-2 { margin-bottom: var(--space-2); }
+.mb-3 { margin-bottom: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-5 { margin-bottom: var(--space-5); }
+.mb-6 { margin-bottom: var(--space-6); }
+
+.divider {
+  height: 0.5pt;
+  background: var(--hairline);
+  margin: var(--space-5) 0;
+  border: 0;
+}
+
+.divider--gold {
+  background: var(--gold);
+  height: 1pt;
+  width: 60mm;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.divider--center {
+  margin-inline: auto;
+}
+
+/* ============================================================
+   Print fidelity — keep colors, avoid awkward breaks
+   ============================================================ */
+@media print {
+  html, body {
+    background: var(--paper) !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body::before {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  /* v4 PDF fix (2026-05-13):
+     Removed the blanket `.section { page-break-after: always; }`
+     rule — it was forcing every section onto its own page even
+     when content was short, producing dozens of blank/half-empty
+     pages. Page breaks are now driven by the explicit
+     .page-break-before utility added at assemble time only on
+     sections that should start on a new page. */
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4 {
+    page-break-after: avoid;
+    break-after: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  table, figure, .diagram, .screenshot, .pullquote, blockquote,
+  .callout, .card, .stat-editorial, pre {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  a {
+    color: var(--navy);
+    border-bottom-color: var(--gold);
+  }
+
+  /* Diagram / screenshot images: clamp so a single tall portrait
+     shot can never overflow a printable A4 page. The PDF margin is
+     14mm top + 20mm bottom, so usable height ≈ 263mm. Leave a few
+     mm for the figure caption. */
+  .diagram img,
+  .screenshot img,
+  figure img,
+  img.full-page-shot {
+    max-height: 235mm;
+    object-fit: contain;
+    object-position: top;
+  }
+}

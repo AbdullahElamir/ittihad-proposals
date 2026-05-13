@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 14px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 16px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 11px; fill: #6B6B6B; text-anchor: middle; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2; fill: none; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" class="title" text-anchor="middle">شجرة التنقّل الرئيسيّة في تجربة المشجّع</text>
+
+  <!-- Root: الرئيسية -->
+  <rect x="500" y="80" width="200" height="80" rx="8" class="boxDk"/>
+  <text x="600" y="115" class="lblW">الصفحة الرئيسيّة</text>
+  <text x="600" y="140" class="lblSm" fill="#E7F2F1">/ home</text>
+
+  <!-- Branches: 8 main destinations arranged in 2 rows -->
+  <!-- Row 1 (y=240) -->
+  <rect x="40"  y="240" width="160" height="70" rx="8" class="box"/>
+  <text x="120" y="270" class="lbl">المباريات</text>
+  <text x="120" y="292" class="lblSm">/matches</text>
+
+  <rect x="220" y="240" width="160" height="70" rx="8" class="box"/>
+  <text x="300" y="270" class="lbl">الأخبار</text>
+  <text x="300" y="292" class="lblSm">/news</text>
+
+  <rect x="400" y="240" width="160" height="70" rx="8" class="box"/>
+  <text x="480" y="270" class="lbl">الراديو</text>
+  <text x="480" y="292" class="lblSm">/radio</text>
+
+  <rect x="580" y="240" width="160" height="70" rx="8" class="box"/>
+  <text x="660" y="270" class="lbl">البث المباشر</text>
+  <text x="660" y="292" class="lblSm">Cloudflare Stream</text>
+
+  <rect x="760" y="240" width="160" height="70" rx="8" class="box"/>
+  <text x="840" y="270" class="lbl">المتجر / التبرّع</text>
+  <text x="840" y="292" class="lblSm">/store · /donate</text>
+
+  <rect x="940" y="240" width="160" height="70" rx="8" class="boxHi"/>
+  <text x="1020" y="270" class="lbl">الملف الشخصي</text>
+  <text x="1020" y="292" class="lblSm">/me · بطاقة العضوية</text>
+
+  <!-- Row 2 (y=410) — sub-pages under المباريات -->
+  <rect x="40"  y="410" width="160" height="60" rx="8" class="boxHi"/>
+  <text x="120" y="438" class="lbl">جدول المباريات</text>
+  <text x="120" y="458" class="lblSm">الموسم الحالي</text>
+
+  <rect x="220" y="410" width="160" height="60" rx="8" class="boxHi"/>
+  <text x="300" y="438" class="lbl">التشكيلات</text>
+  <text x="300" y="458" class="lblSm">Lineups</text>
+
+  <rect x="400" y="410" width="160" height="60" rx="8" class="boxHi"/>
+  <text x="480" y="438" class="lbl">التوقّعات</text>
+  <text x="480" y="458" class="lblSm">Predictions</text>
+
+  <rect x="580" y="410" width="160" height="60" rx="8" class="boxHi"/>
+  <text x="660" y="438" class="lbl">أفضل لاعب</text>
+  <text x="660" y="458" class="lblSm">تصويت 24 ساعة</text>
+
+  <rect x="760" y="410" width="160" height="60" rx="8" class="boxHi"/>
+  <text x="840" y="438" class="lbl">الأرشيف</text>
+  <text x="840" y="458" class="lblSm">صور · فيديوهات</text>
+
+  <rect x="940" y="410" width="160" height="60" rx="8" class="boxHi"/>
+  <text x="1020" y="438" class="lbl">برنامج الولاء</text>
+  <text x="1020" y="458" class="lblSm">النقاط والمكافآت</text>
+
+  <!-- Arrows from root to row 1 -->
+  <path d="M 600 160 L 120 240" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 600 160 L 300 240" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 600 160 L 480 240" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 600 160 L 660 240" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 600 160 L 840 240" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 600 160 L 1020 240" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Arrows from المباريات (row 1) down to row 2 sub-pages -->
+  <path d="M 120 310 L 120 410" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 120 310 Q 200 360 300 410" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 120 310 Q 280 360 480 410" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 120 310 Q 380 360 660 410" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Arrows from الملف الشخصي to row 2 right-side items -->
+  <path d="M 1020 310 Q 1020 360 1020 410" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 1020 310 Q 940 360 840 410" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <text x="600" y="540" class="lbl" font-weight="700">كل قسم رئيسي ينحدر إلى صفحات تفصيليّة (الصفّ السفلي يوضّح أمثلة تحت "المباريات")</text>
+  <text x="600" y="680" class="cap">يتم اكتشاف المسارات تلقائياً وفق الصلاحيّات وخطّة العضويّة</text>
+</svg>

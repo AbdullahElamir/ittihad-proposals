@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 15px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2.5; fill: none; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" class="title" text-anchor="middle">رحلة التبرّع الإلكتروني لنادي الاتّحاد</text>
+
+  <!-- Step 1: choose amount -->
+  <rect x="1000" y="100" width="180" height="80" rx="8" class="box"/>
+  <text x="1090" y="135" class="lbl" font-weight="700">تحديد المبلغ</text>
+  <text x="1090" y="158" class="lblSm">قيم سريعة أو مخصّصة</text>
+
+  <!-- Step 2: choose bank -->
+  <rect x="700" y="80" width="240" height="280" rx="8" class="boxHi"/>
+  <text x="820" y="115" class="lbl" font-weight="700">اختيار البنك / الوسيلة</text>
+
+  <rect x="720" y="135" width="200" height="45" rx="6" class="box"/>
+  <text x="820" y="163" class="lbl">Adfali — مصرف الجمهوريّة</text>
+
+  <rect x="720" y="190" width="200" height="45" rx="6" class="box"/>
+  <text x="820" y="218" class="lbl">Sadad — مصرف الوحدة</text>
+
+  <rect x="720" y="245" width="200" height="45" rx="6" class="box"/>
+  <text x="820" y="273" class="lbl">Edahab — البريد الليبي</text>
+
+  <rect x="720" y="300" width="200" height="45" rx="6" class="box"/>
+  <text x="820" y="328" class="lbl">بطاقة (Visa / Mastercard)</text>
+
+  <!-- Step 3: payment gateway -->
+  <rect x="440" y="170" width="200" height="100" rx="8" class="boxHi"/>
+  <text x="540" y="205" class="lbl" font-weight="700">بوّابة الدفع</text>
+  <text x="540" y="230" class="lblSm">Plutu / MPGS</text>
+  <text x="540" y="252" class="lblSm">SSL/TLS مشفّر</text>
+
+  <!-- Step 4: confirmation -->
+  <rect x="200" y="170" width="190" height="100" rx="8" class="boxDk"/>
+  <text x="295" y="205" class="lblW">تأكيد المعاملة</text>
+  <text x="295" y="230" class="lblSm" fill="#E7F2F1">3D Secure</text>
+  <text x="295" y="252" class="lblSm" fill="#E7F2F1">Callback إلى API</text>
+
+  <!-- Arrows -->
+  <line x1="1000" y1="140" x2="940" y2="160" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="700" y1="220" x2="640" y2="220" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="440" y1="220" x2="390" y2="220" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Step 5+6 outputs -->
+  <path d="M 295 270 Q 295 340 450 340 L 540 340 Q 590 340 590 400" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 295 270 Q 295 340 180 340 L 110 340 Q 60 340 60 400" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Receipt -->
+  <rect x="480" y="410" width="220" height="100" rx="8" class="boxHi"/>
+  <text x="590" y="445" class="lbl" font-weight="700">إيصال إلكتروني</text>
+  <text x="590" y="470" class="lblSm">يُرسل عبر البريد</text>
+  <text x="590" y="490" class="lblSm">ويُخزّن في سجلّ المعاملات</text>
+
+  <!-- Loyalty points -->
+  <rect x="-30" y="410" width="220" height="100" rx="8" class="boxHi"/>
+  <text x="80" y="445" class="lbl" font-weight="700">نقاط ولاء</text>
+  <text x="80" y="470" class="lblSm">تُضاف لرصيد المتبرّع</text>
+  <text x="80" y="490" class="lblSm">بحسب قواعد البرنامج</text>
+
+  <!-- Side: club treasury -->
+  <rect x="230" y="410" width="220" height="100" rx="8" class="box"/>
+  <text x="340" y="445" class="lbl" font-weight="700">خزينة النادي</text>
+  <text x="340" y="470" class="lblSm">تُدوَّن المعاملة في</text>
+  <text x="340" y="490" class="lblSm">دفتر الإيرادات الرقمي</text>
+  <path d="M 295 270 L 340 410" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <text x="600" y="575" class="cap">دعمكَ يُسجَّل ويُكافأ — شفافيّة كاملة عبر سجلّ المعاملات الرقمي</text>
+</svg>

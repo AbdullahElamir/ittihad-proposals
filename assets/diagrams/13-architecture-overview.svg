@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 16px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .lblSmW{ font-size: 12px; fill: #E7F2F1; text-anchor: middle; }
+      .lblBd { font-size: 13px; fill: #0F2A47; text-anchor: middle; font-weight: 700; }
+      .layer { font-size: 14px; fill: #5DACA8; text-anchor: start; font-weight: 700; letter-spacing: 1px; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2.5; fill: none; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" class="title" text-anchor="middle">المعماريّة الثلاثيّة لمنصّة الزعيم</text>
+
+  <!-- ============ Frontend Layer ============ -->
+  <text x="60" y="90" class="layer">FRONTEND LAYER · طبقة الواجهة</text>
+  <rect x="60" y="100" width="900" height="140" rx="10" fill="#FFFFFF" stroke="#0F2A47" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="80" y="125" width="270" height="100" rx="8" class="boxHi"/>
+  <text x="215" y="155" class="lblBd">الموقع العام</text>
+  <text x="215" y="178" class="lblSm">Vue 3 + Vite + Pinia</text>
+  <text x="215" y="198" class="lblSm">ittihadclub.ly</text>
+  <text x="215" y="216" class="lblSm">RTL · Arabic-first</text>
+
+  <rect x="370" y="125" width="270" height="100" rx="8" class="boxHi"/>
+  <text x="505" y="155" class="lblBd">لوحة الإدارة</text>
+  <text x="505" y="178" class="lblSm">Vue 3 + Quasar</text>
+  <text x="505" y="198" class="lblSm">admin.ittihadclub.ly</text>
+  <text x="505" y="216" class="lblSm">VPN-only access</text>
+
+  <rect x="660" y="125" width="270" height="100" rx="8" class="boxHi"/>
+  <text x="795" y="155" class="lblBd">تطبيق الجوّال</text>
+  <text x="795" y="178" class="lblSm">PWA + Native (مستقبليّاً)</text>
+  <text x="795" y="198" class="lblSm">iOS · Android</text>
+  <text x="795" y="216" class="lblSm">Push Notifications</text>
+
+  <!-- arrows down to API layer -->
+  <line x1="215" y1="240" x2="215" y2="280" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="505" y1="240" x2="505" y2="280" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="795" y1="240" x2="795" y2="280" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- ============ API Layer ============ -->
+  <text x="60" y="305" class="layer">API LAYER · طبقة الخدمات</text>
+  <rect x="60" y="315" width="900" height="140" rx="10" class="boxDk"/>
+
+  <text x="510" y="350" class="lblW">ASP.NET Core 8 — REST API</text>
+  <text x="510" y="375" class="lblSmW">60+ خدمة · 100+ نقطة وصول · JWT Auth · RBAC</text>
+
+  <rect x="80" y="395" width="160" height="50" rx="6" fill="#5DACA8" stroke="#0F2A47" stroke-width="2"/>
+  <text x="160" y="425" class="lbl" font-weight="700" fill="#FFFFFF">Auth · Users</text>
+
+  <rect x="260" y="395" width="160" height="50" rx="6" fill="#5DACA8" stroke="#0F2A47" stroke-width="2"/>
+  <text x="340" y="425" class="lbl" font-weight="700" fill="#FFFFFF">Matches · Players</text>
+
+  <rect x="440" y="395" width="160" height="50" rx="6" fill="#5DACA8" stroke="#0F2A47" stroke-width="2"/>
+  <text x="520" y="425" class="lbl" font-weight="700" fill="#FFFFFF">News · Media</text>
+
+  <rect x="620" y="395" width="160" height="50" rx="6" fill="#5DACA8" stroke="#0F2A47" stroke-width="2"/>
+  <text x="700" y="425" class="lbl" font-weight="700" fill="#FFFFFF">Payments · Loyalty</text>
+
+  <rect x="800" y="395" width="140" height="50" rx="6" fill="#5DACA8" stroke="#0F2A47" stroke-width="2"/>
+  <text x="870" y="425" class="lbl" font-weight="700" fill="#FFFFFF">Radio · Stream</text>
+
+  <line x1="215" y1="455" x2="215" y2="495" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="505" y1="455" x2="505" y2="495" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="795" y1="455" x2="795" y2="495" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- ============ Data Layer ============ -->
+  <text x="60" y="520" class="layer">DATA LAYER · طبقة البيانات</text>
+  <rect x="60" y="530" width="900" height="140" rx="10" fill="#FFFFFF" stroke="#0F2A47" stroke-width="2" stroke-dasharray="4,4"/>
+
+  <rect x="80" y="555" width="270" height="100" rx="8" class="box"/>
+  <text x="215" y="585" class="lblBd">SQL Server 2022</text>
+  <text x="215" y="608" class="lblSm">100+ جدول · EF Core 8</text>
+  <text x="215" y="628" class="lblSm">Migrations + Audit Log</text>
+  <text x="215" y="648" class="lblSm">نسخ احتياطي يومي مشفّر</text>
+
+  <rect x="370" y="555" width="270" height="100" rx="8" class="box"/>
+  <text x="505" y="585" class="lblBd">Redis Cache</text>
+  <text x="505" y="608" class="lblSm">الجلسات + Rate-limit</text>
+  <text x="505" y="628" class="lblSm">OTP بنافذة قصيرة</text>
+  <text x="505" y="648" class="lblSm">نتائج التصويت الحيّة</text>
+
+  <rect x="660" y="555" width="270" height="100" rx="8" class="box"/>
+  <text x="795" y="585" class="lblBd">Object Storage</text>
+  <text x="795" y="608" class="lblSm">صور · فيديوهات · ملفّات</text>
+  <text x="795" y="628" class="lblSm">يُقدّم عبر Cloudflare</text>
+  <text x="795" y="648" class="lblSm">CDN + Stream</text>
+
+  <!-- ============ External Integrations strip (right side) ============ -->
+  <text x="980" y="90" class="layer">INTEGRATIONS</text>
+  <rect x="980" y="100" width="200" height="570" rx="10" class="boxHi"/>
+
+  <rect x="1000" y="120" width="160" height="65" rx="6" class="box"/>
+  <text x="1080" y="148" class="lblBd">Cloudflare</text>
+  <text x="1080" y="170" class="lblSm">WAF · CDN · Stream</text>
+
+  <rect x="1000" y="195" width="160" height="65" rx="6" class="box"/>
+  <text x="1080" y="223" class="lblBd">Google</text>
+  <text x="1080" y="245" class="lblSm">OAuth · reCAPTCHA</text>
+
+  <rect x="1000" y="270" width="160" height="65" rx="6" class="box"/>
+  <text x="1080" y="298" class="lblBd">Facebook</text>
+  <text x="1080" y="320" class="lblSm">Login OAuth</text>
+
+  <rect x="1000" y="345" width="160" height="65" rx="6" class="box"/>
+  <text x="1080" y="373" class="lblBd">iSend</text>
+  <text x="1080" y="395" class="lblSm">SMS Gateway</text>
+
+  <rect x="1000" y="420" width="160" height="65" rx="6" class="box"/>
+  <text x="1080" y="448" class="lblBd">Odoo ERP</text>
+  <text x="1080" y="470" class="lblSm">المحاسبة · HR</text>
+
+  <rect x="1000" y="495" width="160" height="65" rx="6" class="box"/>
+  <text x="1080" y="523" class="lblBd">Plutu / MPGS</text>
+  <text x="1080" y="545" class="lblSm">بوّابة الدفع</text>
+
+  <rect x="1000" y="570" width="160" height="65" rx="6" class="box"/>
+  <text x="1080" y="598" class="lblBd">SMTP</text>
+  <text x="1080" y="620" class="lblSm">البريد الإلكتروني</text>
+
+  <!-- side connection lines -->
+  <line x1="960" y1="385" x2="1000" y2="385" class="ar"/>
+
+  <text x="600" y="695" class="cap">معماريّة متعدّدة الطبقات قابلة للتوسّع — كل طبقة يمكن تحديثها مستقلّةً</text>
+</svg>

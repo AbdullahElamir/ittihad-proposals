@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 430" fill="none" role="img" aria-label="Code Experts IT Solutions">
+  <title>Code Experts IT Solutions</title>
+  <desc>Teal scalloped curly-bracket with five cloud-lobe bumps overlapping a navy lowercase e, above the wordmark Code Experts IT Solutions.</desc>
+
+  <!-- =====================================================================
+       BRAND MARK
+       Icon occupies roughly y:50..335 of the 320x430 viewBox, leaving room
+       below for the two-line wordmark. Stroke widths are 25 with rounded
+       line caps and joins. Bracket is drawn first so the navy e visually
+       sits on top at overlap.
+       ===================================================================== -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+
+    <!-- =================================================================
+         TEAL SCALLOPED BRACKET — open stroked path
+         Five outward "cloud-lobe" bumps on the LEFT edge.
+         Going top -> bottom along the left silhouette:
+            Bump 1 (small)   peak ~ (108, 102)
+            Bump 2 (medium)  peak ~ ( 88, 147)
+            Bump 3 (LARGEST) peak ~ ( 68, 195)   <- dead center
+            Bump 4 (medium)  peak ~ ( 88, 243)
+            Bump 5 (small)   peak ~ (108, 288)
+         Valleys between bumps curve back inward toward x~128.
+         Top terminal (200, 55)  curls inward-right toward the e.
+         Bottom terminal (200, 335) mirrors the top.
+
+         Path construction:
+         Spine sits at x=140. Six "valley" anchor points lie ON the spine.
+         Between each consecutive pair of valleys, a SINGLE cubic Bezier
+         segment bulges leftward to form one lobe. Both control handles
+         of each lobe-segment share the same x-coordinate as the peak
+         (placed at ~1/4 and ~3/4 of the segment's vertical extent),
+         which gives the lobe a rounded outward swell with vertical
+         tangents at the valleys — i.e. each valley is C1-continuous
+         with its neighbors, no kinks.
+
+         Anchors:
+           V0 (140,  80)   first valley after top terminal
+           V1 (140, 132)   peak1 (small)  at x~108
+           V2 (140, 178)   peak2 (medium) at x~ 78
+           V3 (140, 222)   peak3 (LARGEST) at x~ 58   <- dead center
+           V4 (140, 268)   peak4 (medium) at x~ 78
+           V5 (140, 315)   peak5 (small)  at x~108
+         Lobes are tighter near top/bottom (smaller bumps) and widest
+         at lobe 3 (the central head of the wave).
+         ================================================================= -->
+    <path stroke="#3FAAA6" stroke-width="25"
+      d="M 200,55
+         C 180,52 158,58 145,68
+         C 138,76 138,75 140,80
+         C 108,82  108,130 140,132
+         C  78,134  78,176 140,178
+         C  58,180  58,220 140,222
+         C  78,224  78,266 140,268
+         C 108,270 108,313 140,315
+         C 138,320 138,319 145,327
+         C 158,337 180,338 200,335" />
+
+    <!-- =================================================================
+         NAVY LOWERCASE "e" — drawn second so it sits on top
+         Body roughly oval ~110 wide x 130 tall, centered around (215,195).
+         Composed of:
+           1. Outer body (open path): right end of crossbar -> over the
+              top -> down the left -> around the bottom -> back up to
+              just past the bottom-right, STOPPING before reaching the
+              crossbar terminus (this leaves the standard e mouth).
+           2. Crossbar: horizontal stroke at y=195.
+         ================================================================= -->
+
+    <!-- e outer body: open path leaving the mouth at lower-right -->
+    <path stroke="#0F2A47" stroke-width="25"
+      d="M 270,195
+         C 270,158 270,140 250,128
+         C 230,116 200,116 180,126
+         C 160,136 152,165 152,195
+         C 152,225 162,255 188,268
+         C 215,282 250,275 268,255" />
+
+    <!-- e crossbar -->
+    <line x1="160" y1="195" x2="270" y2="195"
+      stroke="#0F2A47" stroke-width="25" />
+  </g>
+
+  <!-- =====================================================================
+       WORDMARK
+       ===================================================================== -->
+
+  <!-- "Code Experts" — bold geometric sans-serif -->
+  <text x="160" y="380"
+        text-anchor="middle"
+        font-family="Poppins, 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="38"
+        font-weight="800"
+        fill="#0F2A47"
+        letter-spacing="-0.5">Code Experts</text>
+
+  <!-- "IT SOLUTIONS" — light sans-serif, all caps, wide tracking -->
+  <text x="160" y="410"
+        text-anchor="middle"
+        font-family="Poppins, 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="13"
+        font-weight="500"
+        fill="#0F2A47"
+        letter-spacing="6">IT SOLUTIONS</text>
+</svg>

@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" font-family="Tajawal, 'Segoe UI', Arial, sans-serif" direction="rtl">
+  <defs>
+    <marker id="arrowTeal" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto-start-reverse">
+      <path d="M0,0 L12,6 L0,12 z" fill="#5DACA8"/>
+    </marker>
+    <style>
+      .title { font-size: 22px; font-weight: 700; fill: #0F2A47; }
+      .box   { fill: #FFFFFF; stroke: #0F2A47; stroke-width: 2; }
+      .boxHi { fill: #E7F2F1; stroke: #0F2A47; stroke-width: 2; }
+      .boxDk { fill: #0F2A47; stroke: #0F2A47; stroke-width: 2; }
+      .lbl   { font-size: 15px; fill: #0F2A47; text-anchor: middle; }
+      .lblW  { font-size: 15px; fill: #FFFFFF; text-anchor: middle; font-weight: 700; }
+      .lblSm { font-size: 12px; fill: #6B6B6B; text-anchor: middle; }
+      .lblBd { font-size: 13px; fill: #0F2A47; text-anchor: middle; font-weight: 700; }
+      .cap   { font-size: 11px; fill: #6B6B6B; font-style: italic; text-anchor: middle; }
+      .ar    { stroke: #5DACA8; stroke-width: 2.5; fill: none; }
+      .arDash { stroke: #5DACA8; stroke-width: 2; fill: none; stroke-dasharray: 6,4; }
+    </style>
+  </defs>
+
+  <text x="600" y="40" class="title" text-anchor="middle">معماريّة بوّابة الدفع — تجميع البنوك الليبيّة في مسار موحّد</text>
+
+  <!-- Layer 1: Leadership platform -->
+  <rect x="950" y="90" width="220" height="100" rx="8" class="boxDk"/>
+  <text x="1060" y="125" class="lblW">منصّة الزعيم</text>
+  <text x="1060" y="150" class="lblSm" fill="#E7F2F1">طلب دفع</text>
+  <text x="1060" y="170" class="lblSm" fill="#E7F2F1">عضويّة · تبرّع · متجر</text>
+
+  <!-- Layer 2: unified gateway -->
+  <rect x="630" y="90" width="240" height="100" rx="8" class="boxHi"/>
+  <text x="750" y="125" class="lbl" font-weight="700">بوّابة دفع موحّدة</text>
+  <text x="750" y="150" class="lblSm">Plutu أو MPGS</text>
+  <text x="750" y="170" class="lblSm">PCI-DSS · 3D Secure</text>
+
+  <line x1="950" y1="140" x2="870" y2="140" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Layer 3: 4 banks -->
+  <rect x="40" y="80" width="500" height="220" rx="8" fill="#E7F2F1" stroke="#0F2A47" stroke-width="2"/>
+  <text x="290" y="110" class="lbl" font-weight="700">قنوات الدفع المتّصلة</text>
+
+  <rect x="60" y="130" width="220" height="60" rx="6" class="box"/>
+  <text x="170" y="158" class="lblBd">Adfali</text>
+  <text x="170" y="178" class="lblSm">مصرف الجمهوريّة</text>
+
+  <rect x="300" y="130" width="220" height="60" rx="6" class="box"/>
+  <text x="410" y="158" class="lblBd">Sadad</text>
+  <text x="410" y="178" class="lblSm">مصرف الوحدة</text>
+
+  <rect x="60" y="210" width="220" height="60" rx="6" class="box"/>
+  <text x="170" y="238" class="lblBd">Edahab</text>
+  <text x="170" y="258" class="lblSm">البريد الليبي</text>
+
+  <rect x="300" y="210" width="220" height="60" rx="6" class="box"/>
+  <text x="410" y="238" class="lblBd">Card</text>
+  <text x="410" y="258" class="lblSm">Visa · Mastercard</text>
+
+  <!-- Arrows from gateway to bank cluster -->
+  <line x1="630" y1="120" x2="540" y2="155" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="630" y1="140" x2="540" y2="158" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="630" y1="160" x2="540" y2="232" class="ar" marker-end="url(#arrowTeal)"/>
+  <line x1="630" y1="180" x2="540" y2="235" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Callback path -->
+  <text x="600" y="335" class="lbl" font-weight="700">المسار العكسي — Callback</text>
+
+  <path d="M 290 300 Q 290 360 540 360 L 870 360 Q 1060 360 1060 380" class="arDash" marker-end="url(#arrowTeal)"/>
+  <text x="600" y="380" class="lblSm">إشعار نتيجة الدفع (نجاح/فشل)</text>
+
+  <!-- Finance Admin Dashboard -->
+  <rect x="700" y="430" width="280" height="100" rx="8" class="boxHi"/>
+  <text x="840" y="465" class="lbl" font-weight="700">خزينة النادي</text>
+  <text x="840" y="490" class="lblSm">Finance Admin Dashboard</text>
+  <text x="840" y="510" class="lblSm">صلاحيّات: Finance · CFO</text>
+
+  <!-- Digital ledger -->
+  <rect x="240" y="430" width="280" height="100" rx="8" class="boxDk"/>
+  <text x="380" y="465" class="lblW">دفتر الإيرادات الرقمي</text>
+  <text x="380" y="490" class="lblSm" fill="#E7F2F1">سجلّ غير قابل للتعديل</text>
+  <text x="380" y="510" class="lblSm" fill="#E7F2F1">Transactions Ledger (SQL)</text>
+
+  <line x1="700" y1="480" x2="520" y2="480" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <!-- Reports outputs -->
+  <rect x="700" y="570" width="160" height="70" rx="8" class="box"/>
+  <text x="780" y="600" class="lblBd">تقارير يوميّة</text>
+  <text x="780" y="623" class="lblSm">PDF + Excel</text>
+
+  <rect x="510" y="570" width="160" height="70" rx="8" class="box"/>
+  <text x="590" y="600" class="lblBd">تقارير شهريّة</text>
+  <text x="590" y="623" class="lblSm">إغلاق + تسوية</text>
+
+  <rect x="320" y="570" width="160" height="70" rx="8" class="box"/>
+  <text x="400" y="600" class="lblBd">ترحيل Odoo</text>
+  <text x="400" y="623" class="lblSm">دفتر الأستاذ</text>
+
+  <path d="M 840 530 L 780 570" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 840 530 Q 700 550 590 570" class="ar" marker-end="url(#arrowTeal)"/>
+  <path d="M 380 530 Q 380 550 400 570" class="ar" marker-end="url(#arrowTeal)"/>
+
+  <text x="600" y="680" class="cap">معاملة واحدة تصل أربعة بنوك دون تطوير منفصل لكلٍ منها</text>
+</svg>

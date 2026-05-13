@@ -1,0 +1,1711 @@
+/* ============================================================
+   ITTIHAD GAZETTE — Editorial Components
+   Code Experts proposal (Technical + Financial).
+
+   Aesthetic: refined editorial magazine on cream paper.
+   - Paper background everywhere (no pure white except .diagram inset).
+   - Hairlines are warm gold/gray. No heavy gradients. No teal panels.
+   - Display Latin: Cormorant Garamond (light + italic).
+   - Display Arabic: Reem Kufi 700.
+   - Body: Cairo 400.
+   - Mono labels: IBM Plex Mono, wide letter-spacing.
+
+   Tokens (declared in brand.css):
+     --paper      cream paper       #F5F0E6
+     --paper-warm warm panel        #EFE9DC
+     --paper-soft slight contrast   #FAF6EC
+     --navy       primary           #0F2A47
+     --teal       secondary accent  #3FAAA6
+     --gold       champagne gold    #C29B5C
+     --ink        body text         #1A1A1A
+     --muted      secondary text    #7B7268
+     --hairline   warm gray rule    #D4CDC0
+     --type-display-lt  Cormorant Garamond
+     --type-display-ar  Reem Kufi
+     --type-body        Cairo
+     --type-mono        IBM Plex Mono
+   ============================================================ */
+
+
+/* ============================================================
+   1. Page-break utilities
+   ============================================================ */
+.page-break,
+.page-break-before { page-break-before: always; break-before: page; }
+.page-break-after  { page-break-after:  always; break-after:  page; }
+.avoid-break       { page-break-inside: avoid;  break-inside: avoid; }
+.keep-with-next    { page-break-after:  avoid;  break-after:  avoid; }
+
+
+/* ============================================================
+   2. Big price hero — financial proposal price
+   Pure editorial typography on cream. No panel, no gradient.
+   Cormorant Garamond Light 96pt navy, raised mono unit in gold.
+   ============================================================ */
+.big-price {
+  background: var(--paper);
+  padding: 18mm 0 14mm;
+  margin: 14mm 0;
+  text-align: center;
+  position: relative;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.big-price .eyebrow {
+  font-family: var(--type-mono);
+  font-size: 9pt;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 10mm;
+  display: block;
+}
+.big-price .figure {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-weight: 300;       /* Cormorant Garamond Light */
+  font-size: 96pt;
+  line-height: 0.95;
+  letter-spacing: -3px;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums oldstyle-nums;
+  display: inline-block;
+  position: relative;
+}
+.big-price .figure .unit {
+  font-family: var(--type-mono);
+  font-weight: 500;
+  font-size: 12pt;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  vertical-align: super;
+  margin-right: 6mm;
+  text-transform: uppercase;
+  position: relative;
+  top: -4mm;
+}
+.big-price .usd-line {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16pt;
+  color: var(--muted);
+  margin-top: 6mm;
+  font-variant-numeric: tabular-nums;
+}
+.big-price .justifier {
+  margin-top: 12mm;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 11pt;
+  color: var(--ink);
+  max-width: 130mm;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.75;
+}
+
+
+/* ============================================================
+   3. Tier cards — Standard / Premium / Enterprise
+   Cream paper with gold hairline; recommended uses warm panel
+   with navy hairline + gold corner mark.
+   ============================================================ */
+.tier-card {
+  background: var(--paper);
+  border: 0.7pt solid var(--gold);
+  padding: 14mm;
+  position: relative;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+}
+.tier-card.recommended {
+  background: var(--paper-warm);
+  border: 1pt solid var(--navy);
+}
+/* Gold corner mark for the recommended tier */
+.tier-card.recommended::before {
+  content: "";
+  position: absolute;
+  top: -1pt;
+  left: -1pt;
+  width: 12mm;
+  height: 12mm;
+  border-top: 1pt solid var(--gold);
+  border-left: 1pt solid var(--gold);
+}
+.tier-card.recommended::after {
+  content: "";
+  position: absolute;
+  top: 4mm;
+  left: 4mm;
+  width: 3mm;
+  height: 3mm;
+  background: var(--gold);
+  border-radius: 50%;
+}
+/* Tier badge — quiet italic tag, no pill */
+.tier-card .tier-badge {
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 4mm;
+  display: block;
+}
+.tier-card .tier-eyebrow {
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 4mm;
+}
+.tier-card .tier-name {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 18pt;
+  color: var(--gold);
+  line-height: 1.15;
+  margin-bottom: 6mm;
+}
+.tier-card .tier-price {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-weight: 300;
+  font-size: 48pt;
+  color: var(--navy);
+  line-height: 1;
+  letter-spacing: -1.5px;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 2mm;
+}
+.tier-card .tier-price .per {
+  font-family: var(--type-mono);
+  font-size: 9pt;
+  color: var(--muted);
+  font-weight: 500;
+  margin-right: 4mm;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: middle;
+}
+.tier-card .tier-usd {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 11pt;
+  color: var(--muted);
+  margin-bottom: 8mm;
+  font-variant-numeric: tabular-nums;
+}
+.tier-card ul,
+.tier-card .tier-features {
+  margin: 6mm 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 11pt;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.tier-card ul li,
+.tier-card .tier-features li {
+  padding: 3mm 0;
+  border-bottom: 0.3pt solid var(--hairline);
+  position: relative;
+  padding-right: 7mm;
+}
+.tier-card ul li:last-child,
+.tier-card .tier-features li:last-child {
+  border-bottom: none;
+}
+.tier-card ul li::before,
+.tier-card .tier-features li::before {
+  content: "·";
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 14pt;
+  position: absolute;
+  right: 0;
+  top: 1mm;
+  line-height: 1;
+}
+.tier-card .tier-features li.is-off {
+  color: var(--hairline);
+}
+.tier-card .tier-features li.is-off::before {
+  content: "—";
+  color: var(--hairline);
+  font-size: 9pt;
+  top: 4mm;
+}
+/* Bottom monogram label */
+.tier-card .tier-footer {
+  margin-top: auto;
+  padding-top: 6mm;
+  border-top: 0.5pt solid var(--hairline);
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 2.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  text-align: center;
+}
+.tier-card.tier-basic        { /* no decoration — quiet tier */ }
+.tier-card.tier-professional { /* matches .recommended visually */ }
+.tier-card.tier-advanced     { /* no decoration */ }
+
+
+/* ============================================================
+   4. Signature block — two-column editorial signing panel
+   Equal columns separated by vertical gold hairline.
+   ============================================================ */
+.signature-block {
+  background: var(--paper);
+  border-top: 0.7pt solid var(--gold);
+  border-bottom: 0.7pt solid var(--gold);
+  padding: 14mm 0 12mm;
+  margin: 18mm 0 6mm;
+  display: grid;
+  grid-template-columns: 1fr 0.5pt 1fr;
+  gap: 14mm;
+  position: relative;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+/* The middle hairline column */
+.signature-block::before {
+  content: "";
+  grid-column: 2;
+  background: var(--gold);
+  width: 0.5pt;
+  height: 100%;
+  justify-self: center;
+}
+.signature-block .sig-col {
+  display: flex;
+  flex-direction: column;
+}
+.signature-block .sig-col:first-child { grid-column: 1; }
+.signature-block .sig-col:last-child  { grid-column: 3; }
+.signature-block .sig-eyebrow {
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 3.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 5mm;
+}
+.signature-block .sig-party,
+.signature-block .sig-name {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 600;
+  font-size: 16pt;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 2mm;
+}
+.signature-block .sig-title,
+.signature-block .sig-role {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12pt;
+  color: var(--muted);
+  margin-bottom: 10mm;
+  line-height: 1.4;
+}
+/* Signature line */
+.signature-block .sig-line {
+  border-top: 0.7pt solid var(--navy);
+  width: 50mm;
+  margin-top: 14mm;
+  padding-top: 2mm;
+}
+.signature-block .sig-line-label {
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 2.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.signature-block .sig-date {
+  margin-top: 6mm;
+  font-family: var(--type-mono);
+  font-size: 9pt;
+  color: var(--muted);
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+.signature-block .sig-date-label {
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 2.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-right: 3mm;
+}
+/* Legacy row support (kept for older section files) */
+.signature-block .sig-head {
+  border-bottom: 0.5pt solid var(--hairline);
+  padding-bottom: 4mm;
+  margin-bottom: 8mm;
+}
+.signature-block .sig-row {
+  display: grid;
+  grid-template-columns: 26mm 1fr;
+  gap: 4mm;
+  margin-bottom: 6mm;
+  align-items: end;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 10pt;
+}
+.signature-block .sig-row .lbl {
+  font-family: var(--type-mono);
+  color: var(--muted);
+  font-weight: 500;
+  font-size: 8.5pt;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.signature-block .sig-row .line {
+  border-bottom: 0.5pt solid var(--hairline);
+  min-height: 6mm;
+}
+.signature-block .seal-row {
+  margin-top: 6mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4mm;
+  border-top: 0.3pt solid var(--hairline);
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.signature-block .seal-box {
+  width: 36mm;
+  height: 20mm;
+  border: 0.5pt dashed var(--hairline);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   5. Pricing rows — editorial line items with gold dotted rule
+   ============================================================ */
+.pricing-row {
+  display: grid;
+  grid-template-columns: 1fr 32mm 32mm;
+  gap: 6mm;
+  align-items: baseline;
+  padding: 5mm 0;
+  background: transparent;
+  border-bottom: 1pt dotted var(--gold);
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.pricing-row:last-of-type {
+  border-bottom: 1pt solid var(--navy);
+}
+.pricing-row.head {
+  background: transparent;
+  color: var(--muted);
+  border-bottom: 0.5pt solid var(--hairline);
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 4mm 0;
+}
+.pricing-row.head .item-name,
+.pricing-row.head .price-lyd,
+.pricing-row.head .price-usd {
+  color: var(--muted);
+  font-weight: 500;
+}
+.pricing-row .item-name {
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-weight: 500;
+  font-size: 12pt;
+  color: var(--navy);
+  line-height: 1.4;
+}
+.pricing-row .item-name small,
+.pricing-row .item-desc {
+  display: block;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-weight: 400;
+  font-size: 10pt;
+  color: var(--muted);
+  margin-top: 1.5mm;
+  line-height: 1.5;
+}
+.pricing-row .price-lyd,
+.pricing-row .price-usd {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: 16pt;
+  color: var(--navy);
+  text-align: left;     /* RTL = right of its cell, but the cell sits left */
+  font-variant-numeric: tabular-nums oldstyle-nums;
+  letter-spacing: -0.2px;
+}
+.pricing-row .price-usd {
+  font-size: 12pt;
+  color: var(--muted);
+  font-style: italic;
+}
+.pricing-row .price-range {
+  display: block;
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 1mm;
+  letter-spacing: 1.2px;
+  font-variant-numeric: tabular-nums;
+}
+.pricing-row.total {
+  background: var(--paper-warm);
+  border-bottom: none;
+  border-top: 1pt solid var(--navy);
+  padding: 7mm 6mm;
+  margin-top: 2mm;
+}
+.pricing-row.total .item-name {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 14pt;
+  color: var(--navy);
+}
+.pricing-row.total .price-lyd {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-weight: 600;
+  font-size: 22pt;
+  color: var(--navy);
+  letter-spacing: -0.5px;
+}
+.pricing-row.total .price-usd {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 14pt;
+  color: var(--muted);
+}
+.pricing-row.recommended {
+  background: transparent;
+  position: relative;
+  padding-right: 6mm;
+}
+.pricing-row.recommended::before {
+  content: "";
+  position: absolute;
+  top: 5mm;
+  bottom: 5mm;
+  right: 0;
+  width: 1.5mm;
+  background: var(--gold);
+}
+.pricing-row.recommended::after {
+  content: "موصى به · RECOMMENDED";
+  position: absolute;
+  top: 1mm;
+  left: 0;
+  font-family: var(--type-mono);
+  font-size: 7pt;
+  color: var(--gold);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.pricing-table {
+  border: none;
+  margin: 8mm 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+
+/* ============================================================
+   6. Editorial stats grid — replaces .scoreboard
+   Pure typographic grid on cream, no fills.
+   Each cell contains a .stat-editorial (defined in brand.css).
+   ============================================================ */
+.editorial-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10mm;
+  margin: 12mm 0;
+  padding: 10mm 0;
+  border-top: 1pt solid var(--gold);
+  border-bottom: 1pt solid var(--gold);
+  background: transparent;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.editorial-stats.col-4 { grid-template-columns: repeat(4, 1fr); }
+.editorial-stats.col-2 { grid-template-columns: repeat(2, 1fr); }
+
+
+/* ============================================================
+   7. Display quote — pull-quote with massive guillemet
+   ============================================================ */
+.display-quote {
+  background: var(--paper);
+  margin: 18mm 0;
+  padding: 16mm 0 14mm;
+  position: relative;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.display-quote::before {
+  content: "\BB";   /* » */
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 200pt;
+  color: var(--gold);
+  opacity: 0.4;
+  position: absolute;
+  top: -20mm;
+  right: 0;
+  line-height: 1;
+  letter-spacing: -10px;
+  pointer-events: none;
+  user-select: none;
+}
+.display-quote blockquote {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 28pt;
+  line-height: 1.4;
+  color: var(--navy);
+  max-width: 130mm;
+  margin: 0 0 0 0;
+  padding: 0;
+  font-feature-settings: "liga", "dlig";
+}
+.display-quote .quote-attribution {
+  margin-top: 12mm;
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+.display-quote .quote-attribution-label,
+.display-quote cite::before {
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+  font-style: normal;
+}
+.display-quote .quote-attribution-label {
+  display: block;
+}
+.display-quote .quote-speaker,
+.display-quote cite {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14pt;
+  color: var(--navy);
+  display: block;
+}
+.display-quote::after {
+  content: "";
+  display: block;
+  width: 50mm;
+  height: 1pt;
+  background: var(--gold);
+  margin-top: 8mm;
+}
+
+
+/* ============================================================
+   8. Callout — highlighted editorial note
+   ============================================================ */
+.callout {
+  background: var(--paper-warm);
+  border-left: 1.5mm solid var(--gold);
+  padding: 8mm 10mm;
+  margin: 10mm 0;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 11pt;
+  color: var(--ink);
+  line-height: 1.65;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.callout .callout-label,
+.callout-label {
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 3mm;
+  display: block;
+}
+.callout p { margin: 0 0 3mm; }
+.callout p:last-child { margin-bottom: 0; }
+
+
+/* ============================================================
+   9. Card — general info card
+   Slight cream contrast vs page; warm hairline; quiet eyebrow.
+   ============================================================ */
+.card {
+  background: var(--paper-soft);
+  border: 0.5pt solid var(--hairline);
+  padding: 6mm 8mm;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+}
+.card .card-eyebrow {
+  font-family: var(--type-mono);
+  font-size: 7pt;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 2mm;
+  display: block;
+}
+.card .card-title {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 14pt;
+  color: var(--navy);
+  margin-bottom: 3mm;
+  line-height: 1.25;
+}
+.card .card-body,
+.card p {
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 11pt;
+  color: var(--ink);
+  line-height: 1.65;
+  margin: 0 0 2mm;
+}
+.card p:last-child { margin-bottom: 0; }
+.card .card-footer {
+  margin-top: 4mm;
+  padding-top: 3mm;
+  border-top: 0.3pt solid var(--hairline);
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   10. Grids — editorial spacing
+   ============================================================ */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8mm;
+}
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8mm;
+}
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8mm;
+}
+
+
+/* ============================================================
+   11. Screenshot — image with caption
+   Navy hairline frame, warm caption strip with gold top rule.
+   ============================================================ */
+.screenshot {
+  background: var(--paper);
+  border: 0.7pt solid var(--navy);
+  margin: 8mm 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+}
+.screenshot img,
+.screenshot .screenshot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--paper);
+}
+.screenshot .screenshot-caption {
+  background: var(--paper-warm);
+  border-top: 0.5pt solid var(--gold);
+  padding: 4mm 6mm;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 9.5pt;
+  color: var(--ink);
+  line-height: 1.5;
+}
+.screenshot .screenshot-label {
+  font-family: var(--type-mono);
+  font-size: 7pt;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 1.5mm;
+  display: block;
+}
+
+
+/* ============================================================
+   12. Diagram — SVG diagram with caption
+   ONLY component allowed pure white inset (gives diagrams air).
+   ============================================================ */
+.diagram {
+  background: #FFFFFF;
+  border: 0.5pt solid var(--hairline);
+  padding: 14mm 10mm;
+  margin: 8mm 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.diagram img,
+.diagram svg,
+.diagram .diagram-svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.diagram .diagram-label {
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 4mm;
+  align-self: flex-start;
+}
+.diagram .diagram-caption {
+  margin-top: 6mm;
+  padding-top: 4mm;
+  border-top: 0.3pt solid var(--hairline);
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 10pt;
+  color: var(--muted);
+  text-align: center;
+  width: 100%;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   13. TOC block — editorial table of contents
+   ============================================================ */
+.toc-block {
+  margin: 8mm 0;
+}
+.toc-block .toc-item,
+.toc-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6mm;
+  align-items: baseline;
+  padding: 4mm 0;
+  border-bottom: 0.5pt dotted var(--gold);
+  font-family: var(--type-body), "Cairo", sans-serif;
+}
+.toc-block .toc-item:last-child,
+.toc-row:last-child {
+  border-bottom: 0.5pt solid var(--gold);
+}
+.toc-block .toc-item .label,
+.toc-row .label,
+.toc-row .toc-title {
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-weight: 500;
+  font-size: 12pt;
+  color: var(--navy);
+  line-height: 1.4;
+}
+.toc-block .toc-item .label small,
+.toc-row .label small {
+  display: block;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 10pt;
+  color: var(--muted);
+  margin-top: 0.5mm;
+  letter-spacing: 0.2px;
+}
+.toc-block .toc-item .page,
+.toc-row .page,
+.toc-row .toc-page {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12pt;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+  min-width: 12mm;
+  text-align: left;
+}
+.toc-row .num {
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Rich TOC variant — part headers and chapter entries */
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 6mm 0 0;
+}
+.toc-part {
+  margin-top: 10mm;
+  margin-bottom: 4mm;
+  padding: 4mm 0 3mm;
+  background: transparent;
+  border-top: 1pt solid var(--navy);
+  border-bottom: 0.5pt solid var(--gold);
+  display: flex;
+  align-items: baseline;
+  gap: 8mm;
+  page-break-after: avoid;
+  break-after: avoid;
+  position: relative;
+}
+.toc-part .part-tag {
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 3.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  font-weight: 500;
+  flex-shrink: 0;
+  min-width: 28mm;
+}
+.toc-part .part-title {
+  flex: 1;
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 14pt;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.toc-part .part-title em,
+.toc-part .part-title small {
+  display: block;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11pt;
+  color: var(--muted);
+  margin-top: 1mm;
+}
+.toc-part .part-count {
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.toc-entry {
+  display: flex;
+  align-items: baseline;
+  gap: 6mm;
+  padding: 3mm 0;
+  border-bottom: 0.5pt dotted var(--gold);
+  font-family: var(--type-body), "Cairo", sans-serif;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.toc-entry .toc-chapter {
+  flex-shrink: 0;
+  min-width: 10mm;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12pt;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.toc-entry .toc-title {
+  flex: 1;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-weight: 500;
+  font-size: 12pt;
+  color: var(--navy);
+  line-height: 1.4;
+}
+.toc-entry .toc-title small {
+  display: block;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 10pt;
+  color: var(--muted);
+  margin-top: 0.5mm;
+}
+.toc-entry .toc-leader {
+  flex: 1;
+  align-self: end;
+  margin-bottom: 2mm;
+  border-bottom: 0.5pt dotted var(--gold);
+  min-width: 10mm;
+}
+.toc-entry .toc-page {
+  flex-shrink: 0;
+  min-width: 12mm;
+  text-align: left;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12pt;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.toc-entry.is-highlight {
+  background: var(--paper-warm);
+  padding-left: 4mm;
+  padding-right: 4mm;
+}
+
+/* TOC intro — quiet editorial banner above the parts list */
+.toc-intro {
+  margin: 0 0 10mm;
+  padding: 10mm 0;
+  background: transparent;
+  border-top: 1pt solid var(--gold);
+  border-bottom: 1pt solid var(--gold);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10mm;
+  align-items: baseline;
+}
+.toc-intro .toc-intro-eyebrow {
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 4px;
+  color: var(--gold);
+  font-weight: 500;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2mm;
+}
+.toc-intro .toc-intro-title {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 22pt;
+  color: var(--navy);
+  line-height: 1.15;
+  margin: 0;
+}
+.toc-intro .toc-intro-sub {
+  display: block;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 12pt;
+  color: var(--muted);
+  margin-top: 2mm;
+}
+.toc-intro .toc-intro-mark {
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   14. Exclusion items — quiet editorial "not included" notes
+   ============================================================ */
+.exclusion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4mm 8mm;
+  margin: 6mm 0;
+}
+.exclusion-item {
+  display: grid;
+  grid-template-columns: 6mm 1fr;
+  gap: 3mm;
+  align-items: start;
+  padding: 4mm 5mm;
+  background: var(--paper-warm);
+  border-right: 1.2mm solid var(--gold);
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 10pt;
+  color: var(--ink);
+  line-height: 1.55;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.exclusion-item::before {
+  content: "×";
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+  font-size: 14pt;
+  line-height: 1;
+}
+
+
+/* ============================================================
+   15. Letter / submission letterhead
+   ============================================================ */
+.letter-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 4mm 0 6mm;
+  border-bottom: 1pt solid var(--navy);
+  margin-bottom: 8mm;
+  background: transparent;
+}
+.letter-head .from {
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 10pt;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.letter-head .from b {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 13pt;
+  color: var(--navy);
+  display: block;
+  margin-bottom: 1mm;
+}
+.letter-head .meta {
+  text-align: left;
+  font-family: var(--type-mono);
+  font-size: 9pt;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  line-height: 1.65;
+  text-transform: uppercase;
+}
+.letter-head .meta b {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11pt;
+  color: var(--navy);
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+.letter-body {
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 12pt;
+  line-height: 1.95;
+  color: var(--ink);
+}
+.letter-body p { margin: 0 0 4mm; }
+.letter-body p:first-letter {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.4em;
+  color: var(--navy);
+}
+
+.letter-signoff {
+  margin-top: 8mm;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 11pt;
+}
+.letter-signoff .who {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 13pt;
+  color: var(--navy);
+  margin-top: 2mm;
+}
+.letter-signoff .role {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 11pt;
+}
+
+
+/* ============================================================
+   16. Compact info strip — small metadata band
+   ============================================================ */
+.info-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin: 8mm 0;
+  border-top: 0.5pt solid var(--gold);
+  border-bottom: 0.5pt solid var(--gold);
+  background: transparent;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.info-strip .cell {
+  background: transparent;
+  border: none;
+  border-right: 0.3pt solid var(--hairline);
+  padding: 6mm 4mm;
+  text-align: center;
+}
+.info-strip .cell:last-child { border-right: none; }
+.info-strip .cell .k {
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2mm;
+}
+.info-strip .cell .v {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-weight: 400;
+  font-size: 18pt;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums oldstyle-nums;
+  letter-spacing: -0.3px;
+  display: block;
+  line-height: 1.05;
+}
+
+
+/* ============================================================
+   17. Timeline — editorial phase numerals
+   Cormorant numerals on cream; no gradient circles.
+   ============================================================ */
+.timeline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin: 10mm 0;
+  flex-wrap: wrap;
+  border-top: 0.5pt solid var(--gold);
+  border-bottom: 0.5pt solid var(--gold);
+  padding: 8mm 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.timeline-step {
+  flex: 1 1 0;
+  min-width: 30mm;
+  text-align: center;
+  padding: 0 4mm;
+  position: relative;
+  border-right: 0.3pt solid var(--hairline);
+}
+.timeline-step:last-child { border-right: none; }
+.timeline-step .step-badge {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 42pt;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 4mm;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+}
+.timeline-step .step-label {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.timeline-step .step-sub {
+  display: block;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 10pt;
+  color: var(--muted);
+  margin-top: 1mm;
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   18. Phase card — methodology detail block
+   ============================================================ */
+.phase-card {
+  background: var(--paper);
+  border: 0.5pt solid var(--hairline);
+  border-right: 1.2mm solid var(--gold);
+  padding: 8mm 10mm;
+  margin: 8mm 0;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: grid;
+  grid-template-columns: 18mm 1fr;
+  gap: 8mm;
+  align-items: start;
+}
+.phase-card .phase-icon {
+  width: 18mm;
+  height: 18mm;
+  background: transparent;
+  border: 0.5pt solid var(--gold);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 28pt;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.phase-card .phase-body { min-width: 0; }
+.phase-card .phase-eyebrow {
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 1.5mm;
+}
+.phase-card .phase-title {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 15pt;
+  color: var(--navy);
+  margin: 0 0 3mm;
+  line-height: 1.25;
+}
+.phase-card .phase-meta {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 10pt;
+  color: var(--muted);
+  margin-bottom: 4mm;
+}
+.phase-card .phase-meta b {
+  font-style: normal;
+  font-family: var(--type-mono);
+  font-size: 8.5pt;
+  letter-spacing: 1.5px;
+  color: var(--navy);
+  text-transform: uppercase;
+  margin-left: 3mm;
+}
+.phase-card .phase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6mm 10mm;
+  margin-top: 3mm;
+}
+.phase-card .phase-grid h5 {
+  margin: 0 0 2mm;
+  font-family: var(--type-mono);
+  font-size: 7.5pt;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+.phase-card .phase-grid ul {
+  margin: 0;
+  padding-right: 5mm;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 10pt;
+  line-height: 1.65;
+  color: var(--ink);
+  list-style: none;
+}
+.phase-card .phase-grid li {
+  position: relative;
+  padding-right: 4mm;
+  margin-bottom: 1.5mm;
+}
+.phase-card .phase-grid li::before {
+  content: "·";
+  color: var(--gold);
+  font-weight: 700;
+  position: absolute;
+  right: 0;
+  top: -1mm;
+  font-size: 14pt;
+  line-height: 1;
+}
+
+
+/* ============================================================
+   19. Integration pill — telco / bank / gov / ERP partner
+   ============================================================ */
+.integration-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4mm;
+  margin: 8mm 0;
+}
+.integration-grid.col-3 { grid-template-columns: repeat(3, 1fr); }
+.integration-grid.col-2 { grid-template-columns: repeat(2, 1fr); }
+
+.integration-pill {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  background: var(--paper);
+  border: 0.5pt solid var(--hairline);
+  padding: 4mm 5mm;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 10pt;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.integration-pill .pill-logo {
+  width: 12mm;
+  height: 12mm;
+  background: var(--paper-warm);
+  border: 0.3pt solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--navy);
+  font-size: 13pt;
+  flex-shrink: 0;
+}
+.integration-pill .pill-logo img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+.integration-pill .pill-name {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  color: var(--navy);
+  line-height: 1.25;
+  min-width: 0;
+}
+.integration-pill .pill-name small {
+  display: block;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 9pt;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+  margin-top: 0.5mm;
+}
+.integration-pill.is-required { border-right: 1.2mm solid var(--navy); }
+.integration-pill.is-optional { border-right: 1.2mm solid var(--gold); }
+.integration-pill.is-live     { border-right: 1.2mm solid var(--teal); }
+
+
+/* ============================================================
+   20. KPI bar — editorial progress rule
+   ============================================================ */
+.kpi-bar {
+  display: grid;
+  grid-template-columns: 38mm 1fr 18mm;
+  gap: 4mm;
+  align-items: center;
+  margin: 2mm 0;
+  padding: 2mm 0;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 10pt;
+}
+.kpi-bar .kpi-label { color: var(--ink); font-weight: 500; }
+.kpi-bar .kpi-track {
+  height: 1.5pt;
+  background: var(--hairline);
+  position: relative;
+}
+.kpi-bar .kpi-fill {
+  height: 100%;
+  background: var(--gold);
+  position: relative;
+}
+.kpi-bar .kpi-fill::after {
+  content: "";
+  position: absolute;
+  right: -1mm;
+  top: -1mm;
+  width: 2mm;
+  height: 2mm;
+  background: var(--navy);
+  border-radius: 50%;
+}
+.kpi-bar .kpi-value {
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--navy);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+  font-size: 12pt;
+}
+
+
+/* ============================================================
+   21. Definition list — editorial glossary rows
+   ============================================================ */
+.def-list {
+  margin: 6mm 0;
+  display: grid;
+  gap: 0;
+  border-top: 0.5pt solid var(--gold);
+  border-bottom: 0.5pt solid var(--gold);
+}
+.def-list .def {
+  display: grid;
+  grid-template-columns: 40mm 1fr;
+  gap: 8mm;
+  padding: 4mm 0;
+  background: transparent;
+  font-family: var(--type-body), "Cairo", sans-serif;
+  font-size: 11pt;
+  border-bottom: 0.3pt solid var(--hairline);
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+.def-list .def:last-child { border-bottom: none; }
+.def-list .def dt {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 11pt;
+  color: var(--navy);
+  margin: 0;
+}
+.def-list .def dd {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.65;
+  font-size: 11pt;
+}
+
+
+/* ============================================================
+   22. Pullquote — generic small pull-quote
+   ============================================================ */
+.pullquote {
+  background: transparent;
+  border-top: 0.5pt solid var(--gold);
+  border-bottom: 0.5pt solid var(--gold);
+  padding: 8mm 0;
+  margin: 10mm 0;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16pt;
+  color: var(--navy);
+  line-height: 1.5;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  text-align: center;
+}
+.pullquote cite {
+  display: block;
+  margin-top: 4mm;
+  text-align: center;
+  font-style: normal;
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   23. Doc-end banner — closing editorial colophon
+   ============================================================ */
+.doc-end {
+  margin-top: 16mm;
+  padding: 14mm 0 10mm;
+  background: var(--paper);
+  border-top: 1pt solid var(--gold);
+  border-bottom: 0.5pt solid var(--hairline);
+  text-align: center;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  position: relative;
+}
+.doc-end .doc-end-eyebrow {
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  letter-spacing: 4px;
+  color: var(--gold);
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 4mm;
+  display: block;
+}
+.doc-end .doc-end-title {
+  font-family: var(--type-display-ar), "Reem Kufi", sans-serif;
+  font-weight: 700;
+  font-size: 22pt;
+  color: var(--navy);
+  line-height: 1.25;
+  margin-bottom: 3mm;
+}
+.doc-end .doc-end-title em,
+.doc-end .doc-end-sub {
+  display: block;
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14pt;
+  color: var(--muted);
+  margin-top: 2mm;
+}
+.doc-end .doc-end-meta {
+  margin-top: 6mm;
+  font-family: var(--type-mono);
+  font-size: 8pt;
+  color: var(--muted);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   24. Section-mark — quiet rotated mono mark on section openers
+   ============================================================ */
+.section-mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+}
+.section-mark span {
+  display: block;
+  font-family: var(--type-mono);
+  font-size: 7pt;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  padding: 2mm;
+}
+
+
+/* ============================================================
+   25. Slash-stripe → editorial divider rule
+   Replaces the diagonal teal slash with a centered gold mark.
+   ============================================================ */
+.slash-stripe,
+.editorial-rule {
+  border: none;
+  background: transparent;
+  height: auto;
+  text-align: center;
+  margin: 14mm 0;
+  position: relative;
+  transform: none;
+}
+.slash-stripe::before,
+.editorial-rule::before {
+  content: "";
+  display: block;
+  width: 60mm;
+  height: 0.5pt;
+  background: var(--gold);
+  margin: 0 auto;
+}
+.slash-stripe::after,
+.editorial-rule::after {
+  content: "\2756";   /* ❖ */
+  font-family: var(--type-display-lt), "Cormorant Garamond", serif;
+  font-size: 11pt;
+  color: var(--gold);
+  display: block;
+  margin-top: -2.2mm;
+  background: var(--paper);
+  width: 8mm;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1;
+}
+
+
+/* ============================================================
+   Print safety
+   ============================================================ */
+@media print {
+  .timeline,
+  .timeline-step,
+  .phase-card,
+  .tier-card,
+  .pricing-table,
+  .pricing-row,
+  .signature-block,
+  .big-price,
+  .toc-entry,
+  .toc-part,
+  .integration-pill,
+  .exclusion-item,
+  .info-strip,
+  .info-strip .cell,
+  .def-list .def,
+  .pullquote,
+  .display-quote,
+  .callout,
+  .card,
+  .screenshot,
+  .diagram,
+  .editorial-stats,
+  .doc-end { page-break-inside: avoid; break-inside: avoid; }
+}
